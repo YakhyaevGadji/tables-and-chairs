@@ -1,15 +1,12 @@
+import React from "react";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Golos_Text } from 'next/font/google'
+import "./globals.css";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
+const golosText = Golos_Text({
+    subsets: ['latin'],
+    weight: ['400', '700']
+})
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -23,7 +20,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+            <body
+                className={`${golosText.className}`}
+            >
                 {children}
             </body>
         </html>
