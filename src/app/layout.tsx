@@ -23,7 +23,7 @@ export default function RootLayout({
             <body
                 className={`${golosText.className}`}
             >
-                {children}
+                {children}loool
             </body>
         </html>
     );
