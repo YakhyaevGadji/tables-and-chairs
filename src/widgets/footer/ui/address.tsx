@@ -1,5 +1,6 @@
 import { cn } from '@/shared/lib/utils';
 import React from 'react';
+import { FooterTitle } from './footerTtile';
 
 interface Props {
     className?: string;
@@ -8,8 +9,8 @@ interface Props {
 export const Address: React.FC<Props> = ({ className }: Props) => {
     return (
         <div className={cn('', className)}>
-            <h6>Адрес магазина</h6>
-            <address>
+            <FooterTitle >Адрес магазина</FooterTitle>
+            <address className='font-bold text-[22px] '>
                 Махачкала, проспект Амет-Хана Султана, 112
             </address>
 
