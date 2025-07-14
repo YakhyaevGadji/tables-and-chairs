@@ -2,6 +2,13 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@theme {
+  --color-grey: #989898;
+  --color-blue: #4DCDF1;
+  --color-green: #3F6A43;
+  --color-border-grey: rgba(#000000, .5);
+  --color-black: #000000
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
