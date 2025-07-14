@@ -1,8 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Golos_Text } from 'next/font/google'
-import "./globals.css";
+import { Header } from "@/widgets/header";
+import { SubHeader } from "@/widgets/sub-header";
 import { Footer } from "@/widgets/footer";
+import "./globals.css";
 
 const golosText = Golos_Text({
     subsets: ['latin'],
@@ -24,9 +26,12 @@ export default function RootLayout({
             <body
                 className={`${golosText.className}`}
             >
+                <SubHeader/>
+                <Header/>
                 {children}loool
 
                 <Footer />
+
             </body>
         </html>
     );
