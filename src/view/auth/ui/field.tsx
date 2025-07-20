@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/shared/lib/utils";
 import { Input } from "@/shared/ui/input";
 
 export const Field = ({
@@ -17,10 +17,10 @@ export const Field = ({
     error?: string;
 }) => (
     <div className="w-full mb-4">
-        <label className="block pb-1 text-grey700 font-semibold">{label}</label>
+        <label className="block pb-2  font-[600]">{label}</label>
         <Input
-            className={clsx(
-                "w-full rounded-[10px]",
+            className={cn(
+                "w-full rounded-[8px] py-5",
                 error && "border border-red-500"
             )}
             type={type}

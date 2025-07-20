@@ -63,7 +63,7 @@ export const AuthForm: React.FC<Props> = (props: Props): JSX.Element => {
 
             <Button
                 type="submit"
-                className="max-w-[416px] w-full cursor-pointer hover:opacity-90"
+                className="max-w-[416px] w-full cursor-pointer hover:opacity-90 p-5 mt-5"
             >
                 {isLogin ? "Войти" : "Зарегистрироваться"}
             </Button>
