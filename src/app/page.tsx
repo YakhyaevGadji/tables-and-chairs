@@ -1,14 +1,10 @@
 import React from "react";
-import { Button } from "@/shared/ui/button";
-import Container from "@/shared/ui/container";
+import Home from "@/views/home/ui";
 
-export default function Home() {
+export default function HomePage() {
     return (
-        <div className="">
-            <Container>
-                test
-                <Button>Click</Button>
-            </Container>
-        </div>
+        <>
+            <Home/>
+        </>
     );
 }

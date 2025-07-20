@@ -5,19 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11c9c2c6-e7e3-4132-9ba1-a2a3932caa96" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/catalog/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/assets/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/logo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/home/ui/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/header/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/header/ui/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/header/ui/nav-list.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/sub-header/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/sub-header/ui/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux-store/hook.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux-store/store-provider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux-store/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/catalog/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/ui/container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/container.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/config/pages.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/config/pages.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/home/ui/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/header/ui/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/header/ui/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +106,11 @@
       <workItem from="1752260122940" duration="489000" />
       <workItem from="1752334090608" duration="6573000" />
       <workItem from="1752362319628" duration="2910000" />
+      <workItem from="1752939577632" duration="577000" />
+      <workItem from="1752960227286" duration="4860000" />
+      <workItem from="1753003629816" duration="640000" />
+      <workItem from="1753030166229" duration="14523000" />
+      <workItem from="1753053975650" duration="729000" />
     </task>
     <servers />
   </component>
