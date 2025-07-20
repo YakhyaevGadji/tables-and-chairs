@@ -1,14 +1,22 @@
-import { cn } from '@/shared/lib/utils';
 import React from 'react';
+import { AuthForm } from './auth-form';
 
 interface Props {
-  pathname: "login" | "register"
+    pathname: "register" | "login";
 }
 
-export const AuthPage: React.FC<Props> = ({ pathname }) => {
-  return (
-    <div >
-      {pathname}
-    </div>
-  );
+export const AuthPage: React.FC<Props> = ({ pathname }: Props) => {
+    return (
+        <>
+            <AuthForm
+                {...{
+                    register,
+                    handleSubmit,
+                    errors,
+                    isLogin,
+                    onSubmit,
+                }}
+            />
+        </>
+    );
 };
