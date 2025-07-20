@@ -5,5 +5,12 @@ export const EnumStatus = {
 export type EnumStatus = (typeof EnumStatus)[keyof typeof EnumStatus]
 
 export const PAGES = {
-    PROFILE: (username: string) => `/u/${username}`
+    PROFILE: (username: string) => `/u/${username}`,
+    HOME: '/',
+    CHAIRS: '/chairs',
+    ABOUT: '/about'
+}
+
+export const PATCH = {
+    CHAIRS: '/chairs'
 }

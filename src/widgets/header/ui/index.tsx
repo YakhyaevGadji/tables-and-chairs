@@ -4,6 +4,7 @@ import Logo from "@/shared/ui/logo";
 import NavList from "@/widgets/header/ui/nav-list";
 import { Button } from "@/shared/ui/button";
 import { LogIn } from "lucide-react";
+import { PAGES } from "@/shared/config/pages.config";
 
 export type TypeNavs = {
     value: string;
@@ -11,9 +12,9 @@ export type TypeNavs = {
 }
 
 const navs = [
-    {value: 'Главная', href: '/'},
-    {value: 'Каталог', href: '/catalog'},
-    {value: 'О нас', href: '/about'}
+    {value: 'Главная', href: PAGES.HOME},
+    {value: 'Стулья', href: PAGES.CHAIRS},
+    {value: 'О нас', href: PAGES.ABOUT}
 ];
 
 export const Header = () => {
