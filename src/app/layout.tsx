@@ -4,6 +4,7 @@ import { Golos_Text } from 'next/font/google'
 import { Header } from "@/widgets/header";
 import { SubHeader } from "@/widgets/sub-header";
 import { Footer } from "@/widgets/footer";
+import StoreProvider from "@/redux-store/store-provider";
 import "./globals.css";
 
 const golosText = Golos_Text({
@@ -26,12 +27,14 @@ export default function RootLayout({
             <body
                 className={`${golosText.className}`}
             >
-                <SubHeader/>
-                <Header/>
-                {children}loool
+                <StoreProvider>
+                    <SubHeader/>
+                    <Header/>
 
-                <Footer />
+                    {children}
 
+                    <Footer />
+                </StoreProvider>
             </body>
         </html>
     );
