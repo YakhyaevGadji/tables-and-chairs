@@ -1,5 +1,7 @@
 export default function NotFound() {
-    return <div>
-        not-found
-    </div>
+    return (
+        <div>
+            not-found
+        </div>
+    )
 }
