@@ -1,14 +1,14 @@
+"use client"
 import React from 'react';
 import { AuthForm } from './auth-form';
 import { useYupForm } from '../model/use-yup-form';
 import { SupportDescr } from './support-descr';
 
-interface Props {
-    pathname: "register" | "login";
-}
 
-export const AuthPage: React.FC<Props> = ({ pathname }: Props) => {
-    const { register, handleSubmit, errors, isLogin, onSubmit } = useYupForm(pathname)
+export const AuthPage: React.FC = () => {
+
+    const { register, handleSubmit, errors, isLogin, onSubmit } = useYupForm()
+    
     return (
         <div className='h-screen flex justify-center items-center'>
             <div className="max-w-[630px] w-[100%] bg-white rounded-2xl py-[90px] px-11  border shadow-lg">

@@ -2,10 +2,13 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { loginSchema, registerSchema } from "./auth-schema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useParams } from "next/navigation";
 
-export const useYupForm = (pathname: string) => {
+export const useYupForm = () => {
+    const { auth } = useParams()
 
-    const isLogin = pathname === "register" ? false : true
+
+    const isLogin = auth === "register" ? false : true
     const {
         handleSubmit,
         register,
