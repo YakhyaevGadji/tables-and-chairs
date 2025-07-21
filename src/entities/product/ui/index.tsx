@@ -3,6 +3,7 @@ import { TypeChair } from "@/entities/product";
 import Image from "next/image";
 import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
+import { Button } from "@/shared/ui/button";
 
 interface IPropsProduct {
     data: TypeChair;
@@ -11,18 +12,30 @@ interface IPropsProduct {
 
 export const Product = ({className, data}: IPropsProduct) => {
     return (
-        <Link href={data.slug} className={cn('cursor-pointer px-5', className)}>
-            <div className="mb-3">
-                <Image
-                    className="w-full h-full"
-                    priority={true}
-                    width={200}
-                    height={200}
-                    src={data.images[0]}
-                    alt="cheir"
-                />
+        <li className={cn('cursor-pointer mr-auto max-w-[258px]', className)}>
+            <div className="flex h-full flex-col">
+                <Link href={data.slug}>
+                    <div className="mb-3">
+                        <Image
+                            priority={true}
+                            width={258}
+                            height={200}
+                            src={data.images[0]}
+                            alt="cheir"
+                        />
+                    </div>
+                    <p className="mb-2 font-bold">
+                        {data.title} на {data.attributes.totalHeight}
+                    </p>
+                    <p className="mb-8 line-clamp-4">
+                        {data.description}
+                    </p>
+                </Link>
+
+                <div className="mt-auto">
+                <Button>В корзину</Button>
+                </div>
             </div>
-            <p className="font-bold">{data.title} на {data.attributes.totalHeight}</p>
-        </Link>
+        </li>
     );
 };

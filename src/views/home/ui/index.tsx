@@ -7,7 +7,7 @@ import { PATCH } from "@/shared/config/pages.config";
 
 const Home = () => {
     const test = async () => {
-        const data = await instance.post(PATCH.CHAIRS, {
+        const data = await instance.patch(PATCH.CHAIRS, {
             attributes: {
                 color: "Серый",
                 colorFrame: "Черный",
@@ -21,16 +21,16 @@ const Home = () => {
             category: "chairs",
             createdAt: "2025-07-20T14:00:00Z",
             description: "Элегантный стул с обивкой из велюра и устойчивым металлическим каркасом. Идеально подходит для кухни или столовой.",
-            id: "clw12345678",
+            id: "clw001",
             images: [
-                "https://mebeldagestana.ru/wp-content/uploads/2022/07/223729043_181321234025734_4918709525323284191_n.jpg",
+                "https://www.vistamebel.ru/article/stul-denver.jpg"
             ],
             inStock: true,
             oldPrice: 5499,
             price: 4499,
-            slug: "stul-velyur-chernyy-karkas",
+            slug: "stul-grey-rich",
             tags: ["новинка", "велюр", "стул", "кухня"],
-            title: "Стул велюровый на черном каркасе",
+            title: "Стул \"Грей Рич\"",
             type: "chair",
             unitCount: 1,
             updatedAt: "2025-07-20T14:00:00Z"
