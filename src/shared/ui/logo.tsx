@@ -3,12 +3,16 @@ import Image from "next/image";
 import IconLogo from "@/shared/assets/logo.svg";
 
 interface IPropsLogo {
-    width?: number;
-    height?: number;
+    priority?: boolean;
+    loading?: 'lazy';
 }
 
-const Logo = ({ width, height}: IPropsLogo) => {
-    return <Image width={width} height={height} src={IconLogo} alt="logo"/>;
+const Logo = ({ ...props }: IPropsLogo) => {
+    return <Image
+        {...props}
+        src={IconLogo}
+        alt="logo"
+    />;
 };
 
 export default Logo;

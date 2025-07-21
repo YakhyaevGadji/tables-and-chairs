@@ -13,11 +13,16 @@ export const Product = ({className, data}: IPropsProduct) => {
     return (
         <Link href={data.slug} className={cn('cursor-pointer px-5', className)}>
             <div className="mb-3">
-                <Image className="w-full h-full" width={200} height={200} src={data.images[0]} alt="cheir"/>
+                <Image
+                    className="w-full h-full"
+                    priority={true}
+                    width={200}
+                    height={200}
+                    src={data.images[0]}
+                    alt="cheir"
+                />
             </div>
             <p className="font-bold">{data.title} на {data.attributes.totalHeight}</p>
         </Link>
     );
 };
-
-
