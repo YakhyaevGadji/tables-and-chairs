@@ -4,6 +4,7 @@ import Image from "next/image";
 import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
 import { Button } from "@/shared/ui/button";
+import { PAGES } from "@/shared/config/pages.config";
 
 interface IPropsProduct {
     data: TypeChair;
@@ -14,7 +15,7 @@ export const Product = ({className, data}: IPropsProduct) => {
     return (
         <li className={cn('cursor-pointer mr-auto max-w-[258px]', className)}>
             <div className="flex h-full flex-col">
-                <Link href={data.slug}>
+                <Link href={PAGES.PRODUCT(data.slug)}>
                     <div className="mb-3">
                         <Image
                             priority={true}
