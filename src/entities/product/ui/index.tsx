@@ -33,7 +33,7 @@ export const Product = ({className, data}: IPropsProduct) => {
                 </Link>
 
                 <div className="mt-auto">
-                <Button>В корзину</Button>
+                    <Button className="bg-green">В корзину</Button>
                 </div>
             </div>
         </li>

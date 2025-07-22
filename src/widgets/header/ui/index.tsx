@@ -23,7 +23,7 @@ export const Header = () => {
             <Container className="flex items-center justify-between">
                 <Logo priority={true}/>
                 <NavList navs={navs}/>
-                <Button>
+                <Button className="bg-green">
                     Войти
                     <LogIn />
                 </Button>
