@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11c9c2c6-e7e3-4132-9ba1-a2a3932caa96" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/chairs/[slug]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/product/api/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/product/api/thunks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/product/ui/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/product/ui/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home/ui/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/ui/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/config/pages.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/config/pages.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/axios-instance.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/lib/axios-instance.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/header/ui/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/header/ui/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,23 +38,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/User/Desktop/tables-and-chairs",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\Users\\User\\Desktop\\tables-and-chairs\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/tables-and-chairs&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\User\\Desktop\\tables-and-chairs\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\tables-and-chairs\src\app\global" />
@@ -101,7 +104,8 @@
       <workItem from="1753003629816" duration="640000" />
       <workItem from="1753030166229" duration="14523000" />
       <workItem from="1753053975650" duration="729000" />
-      <workItem from="1753117574058" duration="6340000" />
+      <workItem from="1753117574058" duration="6572000" />
+      <workItem from="1753175901813" duration="6643000" />
     </task>
     <servers />
   </component>
