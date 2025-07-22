@@ -8,6 +8,7 @@ export const PAGES = {
     PROFILE: (username: string) => `/u/${username}`,
     HOME: '/',
     CHAIRS: '/chairs',
+    PRODUCT: (type: string) => `/chairs/${type}`,
     ABOUT: '/about'
 }
 
