@@ -1,6 +1,6 @@
 "use client"
 
-import { AuthPage } from "@/view/auth";
+import { AuthPage } from "@/views/auth";
 
 export default function page() {
 

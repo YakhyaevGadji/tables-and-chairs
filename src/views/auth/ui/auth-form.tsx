@@ -3,6 +3,7 @@ import type { JSX } from "react";
 import type React from "react";
 import { Button } from "@/shared/ui/button";
 import { Field } from "./field";
+import { SubmitButton } from "./submit-button";
 
 interface Props {
     register: any;
@@ -60,13 +61,9 @@ export const AuthForm: React.FC<Props> = (props: Props): JSX.Element => {
                     error={errors.confirmPassword?.message}
                 />
             )}
-
-            <Button
-                type="submit"
-                className="max-w-[416px] w-full cursor-pointer hover:opacity-90 p-5 mt-5"
-            >
+            <SubmitButton >
                 {isLogin ? "Войти" : "Зарегистрироваться"}
-            </Button>
+            </SubmitButton>
         </form>
     );
 };

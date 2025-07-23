@@ -22,11 +22,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body
-                className={`${golosText.className}`}
-            >
+            <body className={`${golosText.className} `}  >
                 <StoreProvider>
-                    {children}
+                    <div className="min-h-screen flex flex-col">{children}</div>
                 </StoreProvider>
             </body>
         </html>

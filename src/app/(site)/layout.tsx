@@ -12,14 +12,16 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body
-            >
+        <>
+            <div>
                 <SubHeader />
                 <Header />
+            </div>
+            <main className="flex-1 py-2">
                 {children}
-                <Footer />
-            </body>
-        </html>
+            </main>
+
+            <Footer />
+        </>
     );
 }
