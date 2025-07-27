@@ -31,11 +31,12 @@ export const Product = ({className, data}: IPropsProduct) => {
                     <p className="mb-8 line-clamp-4">
                         {data.description}
                     </p>
-                </Link>
 
-                <div className="mt-auto">
-                    <Button className="bg-green">В корзину</Button>
-                </div>
+                    <Button onClick={(event) => {
+                        event.preventDefault();
+                        console.log(true);
+                    }} className="bg-green">В корзину</Button>
+                </Link>
             </div>
         </li>
     );
