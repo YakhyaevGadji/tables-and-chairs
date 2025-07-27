@@ -1,11 +1,16 @@
 import React from "react";
 import { ProductList } from "@/widgets/product-list";
 import Container from "@/shared/ui/container";
+import { TypeChair } from "@/entities/product";
 
-export const Chairs = () => {
+interface IPropsChairs {
+    products: TypeChair[]
+}
+
+export const Chairs = ({products}: IPropsChairs) => {
     return (
         <Container>
-            <ProductList/>
+            <ProductList data={products}/>
         </Container>
     );
 };

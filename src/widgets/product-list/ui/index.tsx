@@ -1,18 +1,16 @@
 'use client'
 
 import React from "react";
-import { Product, ProductSkeleton } from "@/entities/product";
-import { useGetProductsQuery } from "@/entities/product/api/thunks";
+import { Product, TypeChair } from "@/entities/product";
 
-export const ProductList = () => {
-    const { data, isLoading } = useGetProductsQuery();
+interface IPropsProductList {
+    data: TypeChair[];
+}
 
-    if(isLoading) return <ProductSkeleton count={5}/>
-    if(!data) return null
-
+export const ProductList = ({data}: IPropsProductList) => {
     return (
         <ul className="grid grid-cols-3 grid-rows-6 gap-4">
-            {data?.map((product) => (
+            {data.map((product) => (
                 <Product
                     key={product.id}
                     data={product}

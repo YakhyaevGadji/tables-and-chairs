@@ -1,7 +1,9 @@
+import Container from "@/shared/ui/container";
+
 export default function NotFound() {
     return (
-        <div>
-            not-found
-        </div>
+        <Container>
+            <h2>Такой страницы не существует</h2>
+        </Container>
     )
 }
