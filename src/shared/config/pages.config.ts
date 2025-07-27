@@ -13,5 +13,6 @@ export const PAGES = {
 }
 
 export const PATCH = {
-    CHAIRS: '/chairs'
+    CHAIRS: '/products?category=chair',
+    CHAIR: (type: string) => `/products/${type}`
 }
