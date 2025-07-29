@@ -6,6 +6,7 @@ import Container from "@/shared/ui/container";
 import useFormatterPrice from "@/shared/hooks/use-formatter-price";
 import { Button } from "@/shared/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
+import Image from "next/image";
 
 interface Props {
     product: TypeChair;
@@ -22,7 +23,7 @@ export const ProductPage = ({ product }: Props) => {
     return (
         <Container className="my-5">
             <div className="mb-5 flex gap-5">
-                <div className="w-[560px] h-[560px] bg-gray-400"></div>
+                <Image width={560} height={560} src={currentData.images[0]} alt={currentData.title}/>
                 <div>
                     <h2 className="text-[24px] font-medium">{currentData.title}</h2>
                     <p className="text-[20px] font-medium">{formatPrice(currentData.price)}</p>
@@ -33,9 +34,9 @@ export const ProductPage = ({ product }: Props) => {
                 </div>
             </div>
             <Tabs defaultValue="characteristics">
-                <TabsList>
-                    <TabsTrigger value="characteristics">Характеристики</TabsTrigger>
-                    <TabsTrigger value="description">Описание</TabsTrigger>
+                <TabsList className="rounded-none">
+                    <TabsTrigger className="rounded-none" value="characteristics">Характеристики</TabsTrigger>
+                    <TabsTrigger className="rounded-none" value="description">Описание</TabsTrigger>
                 </TabsList>
                 <TabsContent value="characteristics">пупуп</TabsContent>
                 <TabsContent value="description">Change your password here.</TabsContent>
