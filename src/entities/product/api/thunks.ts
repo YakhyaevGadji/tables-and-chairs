@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { PAGES, PATCH } from "@/shared/config/pages.config";
+import { PATCH } from "@/shared/config/pages.config";
 import { API_URL } from "@/shared/lib/axios-instance";
 import { TypeChair } from "@/entities/product";
 
@@ -11,7 +11,7 @@ export const thunksProduct = createApi({
             query: () => PATCH.CHAIRS
         }),
         getOneProduct: builder.query<TypeChair, string>({
-            query: (slug: string) => PAGES.PRODUCT(slug)
+            query: (slug: string) => PATCH.CHAIR(slug)
         })
     })
 });

@@ -1,5 +1,7 @@
 import axios from "axios";
 
+export const API_GLOBAL = "http://212.193.48.233:8080"
+
 export const API_URL = "http://212.193.48.233:8080/api/v1";
 
 export const instance = axios.create({
