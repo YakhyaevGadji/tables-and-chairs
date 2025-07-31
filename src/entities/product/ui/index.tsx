@@ -5,6 +5,7 @@ import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
 import { Button } from "@/shared/ui/button";
 import { PAGES } from "@/shared/config/pages.config";
+import { API_GLOBAL } from "@/shared/lib/axios-instance";
 
 interface IPropsProduct {
     data: TypeChair;
@@ -13,29 +14,34 @@ interface IPropsProduct {
 
 export const Product = ({className, data}: IPropsProduct) => {
     return (
-        <li className={cn('cursor-pointer mr-auto max-w-[258px]', className)}>
-            <div className="flex h-full flex-col">
+        <li className={cn('cursor-pointer w-[258px]', className)}> {/* фиксируем ширину */}
+            <div className="flex h-[450px] flex-col">
                 <Link href={PAGES.PRODUCT(data.slug)}>
-                    <div className="mb-3">
+                    {/* Контейнер изображения тоже фиксированной ширины */}
+                    <div className="relative w-[258px] h-[200px]">
                         <Image
-                            priority={true}
-                            width={258}
-                            height={200}
-                            src={data.images[0]}
-                            alt="cheir"
+                            src={`${API_GLOBAL}${data.images[0].url}`}
+                            alt="chair"
+                            fill
+                            priority
+                            style={{ objectFit: 'cover' }}
                         />
                     </div>
+
                     <p className="mb-2 font-bold">
                         {data.title} на {data.attributes.totalHeight}
                     </p>
-                    <p className="mb-8 line-clamp-4">
-                        {data.description}
-                    </p>
+                    <p className="mb-8 line-clamp-4 h-[88px] break-words">{data.description}</p>
 
-                    <Button onClick={(event) => {
-                        event.preventDefault();
-                        console.log(true);
-                    }} className="bg-green">В корзину</Button>
+                    <Button
+                        onClick={(event) => {
+                            event.preventDefault();
+                            console.log(true);
+                        }}
+                        className="bg-green"
+                    >
+                        В корзину
+                    </Button>
                 </Link>
             </div>
         </li>
