@@ -6,6 +6,17 @@ type TypeImage = {
     created_at: string;
 }
 
+export type TypeAttributes = {
+    color: string;
+    colorFrame: string;
+    colorPillow: string;
+    material: string;
+    materialFrame: string;
+    materialPillow: string;
+    totalHeight: number;
+    width: number;
+}
+
 export type TypeChair = {
     id: string;
     title: string;
@@ -21,14 +32,5 @@ export type TypeChair = {
     tags: string[];
     createdAt: string;
     updatedAt: string;
-    attributes: {
-        color: string;
-        colorFrame: string;
-        colorPillow: string;
-        material: string;
-        materialFrame: string;
-        materialPillow: string;
-        totalHeight: number;
-        width: number;
-    };
+    attributes: TypeAttributes;
 };
