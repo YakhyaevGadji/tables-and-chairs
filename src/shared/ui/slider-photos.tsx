@@ -1,6 +1,5 @@
 'use client'
 
-import React from "react";
 import {
     Carousel,
     CarouselApi,
@@ -13,16 +12,17 @@ import { TypeImage } from "@/entities/product/model/types";
 import Image from "next/image";
 import { clsx } from "clsx";
 import { PATCH } from "@/shared/config/pages.config";
+import { useEffect, useState } from "react";
 
 interface IPropsSingleProductSlider {
-    images: TypeImage[]
+    images: TypeImage[];
 }
 
-const SingleProductSlider = ({images}: IPropsSingleProductSlider) => {
-    const [api, setApi] = React.useState<CarouselApi>();
-    const [current, setCurrent] = React.useState(0);
+const SliderPhotos = ({images}: IPropsSingleProductSlider) => {
+    const [api, setApi] = useState<CarouselApi>();
+    const [current, setCurrent] = useState(0);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (!api) return
 
         setCurrent(api.selectedScrollSnap());
@@ -72,4 +72,4 @@ const SingleProductSlider = ({images}: IPropsSingleProductSlider) => {
     );
 };
 
-export default SingleProductSlider;
+export default SliderPhotos;

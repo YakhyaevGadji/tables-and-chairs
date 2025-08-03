@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 
 interface IPropsCount {
     onChange: (count: number) => void;
-    defaultValue: number;
+    value: number;
 }
 
-const Count = ({onChange, defaultValue}: IPropsCount) => {
-    const [count, setCount] = useState(defaultValue);
+const Count = ({onChange, value}: IPropsCount) => {
+    const [count, setCount] = useState(value);
 
     const handlerClickCount = (type: string) => {
         if(type === 'plus') {

@@ -13,10 +13,9 @@ interface IPropsProduct {
 
 export const Product = ({className, data}: IPropsProduct) => {
     return (
-        <li className={cn('cursor-pointer w-[258px]', className)}> {/* фиксируем ширину */}
+        <li className={cn('cursor-pointer w-[258px]', className)}>
             <div className="flex h-[450px] flex-col">
                 <Link href={PAGES.PRODUCT(data.slug)}>
-                    {/* Контейнер изображения тоже фиксированной ширины */}
                     <div className="relative w-[258px] h-[200px]">
                         <Image
                             src={PATCH.IMAGE(data.images[0].url)}
@@ -33,10 +32,7 @@ export const Product = ({className, data}: IPropsProduct) => {
                     <p className="mb-8 line-clamp-4 h-[88px] break-words">{data.description}</p>
 
                     <Button
-                        onClick={(event) => {
-                            event.preventDefault();
-                            console.log(true);
-                        }}
+                        onClick={(event) => event.preventDefault()}
                         className="bg-green"
                     >
                         В корзину
