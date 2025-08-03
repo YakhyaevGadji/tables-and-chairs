@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { API_GLOBAL } from "@/shared/lib/axios-instance";
 import { Shield, Truck } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { useState } from "react";
@@ -10,6 +8,7 @@ import Badges from "@/entities/single-product/ui/badges";
 import Count from "@/entities/single-product/ui/count";
 import Message from "@/entities/single-product/ui/message";
 import SingleProductTabs from "@/entities/single-product/ui/single-product-tabs";
+import SingleProductSlider from "@/entities/single-product/ui/single-product-slider";
 
 interface IPropsSingleProduct {
     productData: TypeChair;
@@ -27,7 +26,8 @@ export const SingleProduct = ({productData}: IPropsSingleProduct) => {
     return (
         <div>
             <div className="grid mb-4 lg:grid-cols-2 gap-8 lg:gap-12">
-                <Image width={560} height={560} src={`${API_GLOBAL}${currentData.images[0].url}`} alt={currentData.title}/>
+                <SingleProductSlider images={currentData.images}/>
+
                 <div className="w-full flex flex-col justify-between">
                     <div>
                         <Badges isStock={currentData.inStock}/>
