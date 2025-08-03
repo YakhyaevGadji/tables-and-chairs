@@ -1,3 +1,5 @@
+import { API_GLOBAL } from "@/shared/lib/axios-instance";
+
 export const EnumStatus = {
     SUCCESS: "SUCCESS"
 } as const
@@ -14,5 +16,6 @@ export const PAGES = {
 
 export const PATCH = {
     CHAIRS: '/products?category=chair',
-    CHAIR: (type: string) => `/products/${type}`
+    CHAIR: (type: string) => `/products/${type}`,
+    IMAGE: (type: string) => `${API_GLOBAL}${type}`
 }

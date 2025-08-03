@@ -4,8 +4,7 @@ import Image from "next/image";
 import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
 import { Button } from "@/shared/ui/button";
-import { PAGES } from "@/shared/config/pages.config";
-import { API_GLOBAL } from "@/shared/lib/axios-instance";
+import { PAGES, PATCH } from "@/shared/config/pages.config";
 
 interface IPropsProduct {
     data: TypeChair;
@@ -20,7 +19,7 @@ export const Product = ({className, data}: IPropsProduct) => {
                     {/* Контейнер изображения тоже фиксированной ширины */}
                     <div className="relative w-[258px] h-[200px]">
                         <Image
-                            src={`${API_GLOBAL}${data.images[0].url}`}
+                            src={PATCH.IMAGE(data.images[0].url)}
                             alt="chair"
                             fill
                             priority

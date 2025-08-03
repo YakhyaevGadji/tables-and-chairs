@@ -1,4 +1,4 @@
-type TypeImage = {
+export type TypeImage = {
     id: string;
     product_id: string;
     url: string;
