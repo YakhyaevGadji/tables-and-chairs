@@ -1,8 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Golos_Text } from 'next/font/google'
-import StoreProvider from "@/redux-store/store-provider";
-
+import { Providers } from "@/shared/ui/providers";
 import "./globals.css";
 
 const golosText = Golos_Text({
@@ -22,11 +21,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${golosText.className} `}  >
-                <StoreProvider>
-                    <div className="min-h-screen flex flex-col">{children}</div>
-                </StoreProvider>
+            <body className={`${golosText.className} flex flex-col h-screen `}  >
+                <Providers>{children}</Providers>
             </body>
-        </html>
+        </html >
     );
 }

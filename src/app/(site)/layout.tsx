@@ -20,7 +20,6 @@ export default function RootLayout({
             <main className="flex-1 py-2">
                 {children}
             </main>
-
             <Footer />
         </>
     );

@@ -1,8 +1,10 @@
 export const API_ROUTES = {
+    HOME: "/",
     AUTH: {
-        LOGIN: "/auth",
-        REGISTER: "/register",
-        AUTH_ME: "/auth_me",
+        LOGIN: "/auth/login",
+        REGISTER: "/auth/register",
+        AUTH_ME: "/auth/me",
+
     },
     PRODUCTS: {
         ALL: "/products",

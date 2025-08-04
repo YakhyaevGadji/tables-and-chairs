@@ -4,6 +4,7 @@ import type React from "react";
 import { Button } from "@/shared/ui/button";
 import { Field } from "./field";
 import { SubmitButton } from "./submit-button";
+import { LoaderCircle } from "lucide-react";
 
 interface Props {
     register: any;
@@ -12,10 +13,11 @@ interface Props {
     isLogin: boolean;
     onSubmit: (data: any) => void;
     className?: string;
+    isSubmitting: boolean
 }
 
 export const AuthForm: React.FC<Props> = (props: Props): JSX.Element => {
-    const { register, handleSubmit, errors, isLogin, onSubmit, className } =
+    const { register, handleSubmit, errors, isLogin, onSubmit, className, isSubmitting } =
         props;
 
     return (
@@ -26,7 +28,7 @@ export const AuthForm: React.FC<Props> = (props: Props): JSX.Element => {
             {!isLogin && (
                 <Field
                     label="Name"
-                    name="name"
+                    name="username"
                     placeholder="Your Name"
                     register={register}
                     error={errors.name?.message}
@@ -62,7 +64,16 @@ export const AuthForm: React.FC<Props> = (props: Props): JSX.Element => {
                 />
             )}
             <SubmitButton >
-                {isLogin ? "Войти" : "Зарегистрироваться"}
+                {
+                    isSubmitting ? (
+                        <> <LoaderCircle className="animate-spin" /> Вход...</>
+                    ) : (
+                        <>
+                            {isLogin ? "Войти" : "Зарегистрироваться"}
+                        </>
+                    )
+                }
+
             </SubmitButton>
         </form>
     );

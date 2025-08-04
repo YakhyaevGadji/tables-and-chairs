@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 export const registerSchema = yup.object({
-    name: yup.string().required("Введите имя").min(2, "Слишком короткое имя"),
+    username: yup.string().required("Введите имя").min(2, "Слишком короткое имя"),
     email: yup
         .string()
         .email("Некорректный email")
@@ -26,3 +26,7 @@ export const loginSchema = yup.object({
         .min(6, "Минимум 6 символов")
         .required("Обязательное поле"),
 });
+
+
+export type TRegistervValues = yup.InferType<typeof registerSchema>;
+export type TLoginvValues = yup.InferType<typeof loginSchema>;
