@@ -1,15 +1,12 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Golos_Text } from 'next/font/google'
-import { Header } from "@/widgets/header";
-import { SubHeader } from "@/widgets/sub-header";
-import { Footer } from "@/widgets/footer";
-import StoreProvider from "@/redux-store/store-provider";
+import { Providers } from "@/shared/ui/providers";
 import "./globals.css";
 
 const golosText = Golos_Text({
     subsets: ['latin'],
-    weight: ['400', '700']
+    weight: ['400', '500', '600', '700']
 })
 
 export const metadata: Metadata = {
@@ -24,18 +21,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body
-                className={`${golosText.className}`}
-            >
-                <StoreProvider>
-                    <SubHeader/>
-                    <Header/>
-
-                    {children}
-
-                    <Footer />
-                </StoreProvider>
+            <body className={`${golosText.className} flex flex-col h-screen `}  >
+                <Providers>{children}</Providers>
             </body>
-        </html>
+        </html >
     );
 }
