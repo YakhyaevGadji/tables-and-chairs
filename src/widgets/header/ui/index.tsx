@@ -21,9 +21,9 @@ export const Header = () => {
     return (
         <header className="py-5 bg-[#F7F8F9]">
             <Container className="flex items-center justify-between">
-                <Logo/>
+                <Logo priority={true}/>
                 <NavList navs={navs}/>
-                <Button>
+                <Button className="bg-green">
                     Войти
                     <LogIn />
                 </Button>
