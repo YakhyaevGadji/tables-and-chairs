@@ -17,10 +17,10 @@ type typeImageCarousel = Pick<TypeImage, "id" | "url">;
 
 interface IPropsSingleProductSlider {
     images: typeImageCarousel[];
-    buttons: boolean;
-    bottomSlider: boolean;
-    bottomButtons: boolean;
-    maxThumbs: number
+    buttons?: boolean;
+    bottomSlider?: boolean;
+    bottomButtons?: boolean;
+    maxThumbs?: number
 }
 
 const SliderPhotos = ({ images, buttons = true, bottomSlider = true, bottomButtons = true, maxThumbs = 4 }: IPropsSingleProductSlider) => {
@@ -69,7 +69,6 @@ const SliderPhotos = ({ images, buttons = true, bottomSlider = true, bottomButto
                 }
             </Carousel>
 
-            {/* Мини-превью слайдер */}
             {
                 bottomSlider && <div className="mt-4">
                     <Carousel setApi={setThumbsApi}>

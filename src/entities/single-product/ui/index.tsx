@@ -7,9 +7,9 @@ import Badges from "@/entities/single-product/ui/badges";
 import Count from "@/entities/single-product/ui/count";
 import Message from "@/entities/single-product/ui/message";
 import SingleProductTabs from "@/entities/single-product/ui/single-product-tabs";
-import SliderPhotos from "@/shared/ui/slider-photos";
 import { PATCH } from "@/shared/config/pages.config";
 import { useFormatterImgs } from "@/shared/hooks/use-formatter-imgs";
+import SliderPhotos from "./slider-photos";
 
 interface IPropsSingleProduct {
     data: TypeChair;
@@ -34,10 +34,6 @@ export const SingleProduct = ({ data }: IPropsSingleProduct) => {
                             <span className="block mb-4 text-2xl text-gray-500 line-through font-normal">{formatPrice(data.price)}</span>
                         </div>
                     </div>
-
-                    <Message isOpen={count !== 6} title="Скрои выполнения заказа">
-                        Минимальный заказ стульев — от 6 штук. При изменении их количества срок ожидания составит 2 недели.
-                    </Message>
 
                     <div>
                         <Count onChange={(count) => setCount(count)} value={6} />
