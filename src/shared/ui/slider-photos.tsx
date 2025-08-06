@@ -25,8 +25,10 @@ interface IPropsSingleProductSlider {
 
 const SliderPhotos = ({ images, buttons = true, bottomSlider = true, bottomButtons = true, maxThumbs = 4 }: IPropsSingleProductSlider) => {
     const [mainApi, setMainApi] = useState<CarouselApi>();
-    const [current, setCurrent] = useState(0);
     const [thumbsApi, setThumbsApi] = useState<CarouselApi>();
+    const [current, setCurrent] = useState(0);
+
+
     useEffect(() => {
         if (!mainApi) return;
 
@@ -91,7 +93,7 @@ const SliderPhotos = ({ images, buttons = true, bottomSlider = true, bottomButto
                             ))}
                         </CarouselContent>
                         {
-                            bottomButtons && maxThumbs > 4 && (
+                            bottomButtons && maxThumbs <= images.length && (
                                 <>
                                     <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
                                     <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
