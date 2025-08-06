@@ -8,23 +8,26 @@ import Count from "@/entities/single-product/ui/count";
 import Message from "@/entities/single-product/ui/message";
 import SingleProductTabs from "@/entities/single-product/ui/single-product-tabs";
 import SliderPhotos from "@/shared/ui/slider-photos";
+import { PATCH } from "@/shared/config/pages.config";
+import { useFormatterImgs } from "@/shared/hooks/use-formatter-imgs";
 
 interface IPropsSingleProduct {
     data: TypeChair;
 }
 
-export const SingleProduct = ({data}: IPropsSingleProduct) => {
+export const SingleProduct = ({ data }: IPropsSingleProduct) => {
     const [count, setCount] = useState(6);
     const { formatPrice } = useFormatterPrice();
+    const images = useFormatterImgs(data.images, PATCH.IMAGE)
 
     return (
         <div>
             <div className="grid mb-4 lg:grid-cols-2 gap-8 lg:gap-12">
-                <SliderPhotos images={data.images}/>
+                <SliderPhotos images={images} />
 
                 <div className="w-full flex flex-col justify-between">
                     <div>
-                        <Badges isStock={data.inStock}/>
+                        <Badges isStock={data.inStock} />
                         <h2 className="text-4xl font-bold mb-4">{data.title}</h2>
                         <div className="flex items-center gap-2">
                             <span className="block mb-4 text-4xl font-medium">{formatPrice(data.price)}</span>
@@ -37,7 +40,7 @@ export const SingleProduct = ({data}: IPropsSingleProduct) => {
                     </Message>
 
                     <div>
-                        <Count onChange={(count) => setCount(count)} value={6}/>
+                        <Count onChange={(count) => setCount(count)} value={6} />
 
                         <Button className="mb-4 w-full font-normal bg-green select-none">Добавить в корзину</Button>
                         <div className="grid grid-cols-2 gap-4 p-4 bg-green-50">

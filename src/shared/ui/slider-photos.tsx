@@ -13,9 +13,9 @@ import Image from "next/image";
 import { clsx } from "clsx";
 import { PATCH } from "@/shared/config/pages.config";
 import { useEffect, useState } from "react";
-
+type typeImageCarousel = Pick<TypeImage, "id" | "url">
 interface IPropsSingleProductSlider {
-    images: TypeImage[];
+    images: typeImageCarousel[];
 }
 
 const SliderPhotos = ({ images }: IPropsSingleProductSlider) => {
@@ -41,8 +41,8 @@ const SliderPhotos = ({ images }: IPropsSingleProductSlider) => {
                             <Image
                                 width={560}
                                 height={560}
-                                src={PATCH.IMAGE(image.url)}
-                                alt={image.product_id}
+                                src={image.url}
+                                alt={image.id + 'img'}
                             />
                         </CarouselItem>
                     ))}
@@ -63,8 +63,8 @@ const SliderPhotos = ({ images }: IPropsSingleProductSlider) => {
                         )}
                         width={60}
                         height={60}
-                        src={PATCH.IMAGE(image.url)}
-                        alt={image.created_at}
+                        src={image.url}
+                        alt={image.id + 'img'}
                     />
                 ))}
             </div>

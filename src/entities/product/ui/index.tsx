@@ -11,7 +11,7 @@ interface IPropsProduct {
     className?: string;
 }
 
-export const Product = ({className, data}: IPropsProduct) => {
+export const Product = ({ className, data }: IPropsProduct) => {
     return (
         <li className={cn('cursor-pointer w-[258px]', className)}>
             <div className="flex h-[450px] flex-col">
