@@ -7,7 +7,7 @@ interface IPropsProductList {
     data: TypeChair[];
 }
 
-export const ProductList = ({data}: IPropsProductList) => {
+export const ProductList = ({ data }: IPropsProductList) => {
     return (
         <ul className="grid grid-cols-3 grid-rows-6 gap-4">
             {data.map((product) => (

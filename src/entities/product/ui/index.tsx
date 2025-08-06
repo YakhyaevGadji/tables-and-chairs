@@ -1,10 +1,10 @@
 import React from "react";
 import { TypeChair } from "@/entities/product";
-import Image from "next/image";
 import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
 import { Button } from "@/shared/ui/button";
 import { PAGES, PATCH } from "@/shared/config/pages.config";
+import Image from "next/image";
 
 interface IPropsProduct {
     data: TypeChair;

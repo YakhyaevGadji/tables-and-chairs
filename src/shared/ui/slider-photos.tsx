@@ -18,7 +18,7 @@ interface IPropsSingleProductSlider {
     images: TypeImage[];
 }
 
-const SliderPhotos = ({images}: IPropsSingleProductSlider) => {
+const SliderPhotos = ({ images }: IPropsSingleProductSlider) => {
     const [api, setApi] = useState<CarouselApi>();
     const [current, setCurrent] = useState(0);
 
@@ -47,8 +47,8 @@ const SliderPhotos = ({images}: IPropsSingleProductSlider) => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className="absolute left-2"/>
-                <CarouselNext className="absolute right-2"/>
+                <CarouselPrevious className="absolute left-2" />
+                <CarouselNext className="absolute right-2" />
             </Carousel>
             <div className="flex gap-2">
                 {images.map((image, index) => (
