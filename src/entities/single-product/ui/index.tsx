@@ -4,12 +4,11 @@ import { useState } from "react";
 import useFormatterPrice from "@/shared/hooks/use-formatter-price";
 import { TypeChair } from "@/entities/product";
 import Badges from "@/entities/single-product/ui/badges";
-import Count from "@/entities/single-product/ui/count";
-import Message from "@/entities/single-product/ui/message";
 import SingleProductTabs from "@/entities/single-product/ui/single-product-tabs";
 import { PATCH } from "@/shared/config/pages.config";
 import { useFormatterImgs } from "@/shared/hooks/use-formatter-imgs";
 import SliderPhotos from "./slider-photos";
+import { QuantitySelector } from "./quantity-selector";
 
 interface IPropsSingleProduct {
     data: TypeChair;
@@ -19,7 +18,7 @@ export const SingleProduct = ({ data }: IPropsSingleProduct) => {
     const [count, setCount] = useState(6);
     const { formatPrice } = useFormatterPrice();
     const images = useFormatterImgs(data.images, PATCH.IMAGE)
-
+    const [selectedQuantity, setSelectedQuantity] = useState(1)
     return (
         <div>
             <div className="grid mb-4 lg:grid-cols-2 gap-8 lg:gap-12">
@@ -36,7 +35,12 @@ export const SingleProduct = ({ data }: IPropsSingleProduct) => {
                     </div>
 
                     <div>
-                        <Count onChange={(count) => setCount(count)} value={6} />
+                        <div className="max-w-[200px]">
+                            <QuantitySelector
+                                value={selectedQuantity}
+                                onChange={setSelectedQuantity}
+                            />
+                        </div>
 
                         <Button className="mb-4 w-full font-normal bg-green select-none">Добавить в корзину</Button>
                         <div className="grid grid-cols-2 gap-4 p-4 bg-green-50">
