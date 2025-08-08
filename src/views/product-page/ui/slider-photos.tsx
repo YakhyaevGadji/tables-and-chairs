@@ -43,9 +43,9 @@ const SliderPhotos = ({ images, buttons = true, bottomSlider = true, bottomButto
     }, [mainApi]);
 
     return (
-        <div className="relative w-[560px]">
+        <div className="relative w-[560px] ">
             {/* Основной слайдер */}
-            <Carousel setApi={setMainApi}>
+            <Carousel setApi={setMainApi} className="h-[560px]">
                 <CarouselContent>
                     {images.map((image) => (
                         <CarouselItem key={image.id}>
@@ -54,7 +54,8 @@ const SliderPhotos = ({ images, buttons = true, bottomSlider = true, bottomButto
                                 height={560}
                                 src={image.url}
                                 alt={image.id + 'img'}
-                                className="object-contain"
+                                style={{ objectFit: 'contain', height: '560px' }}
+
                             />
                         </CarouselItem>
                     ))}
