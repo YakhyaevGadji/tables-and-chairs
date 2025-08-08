@@ -11,7 +11,7 @@ const useFormatterPrice = (
     });
 
     const formatPrice = (value: number) => {
-        return formatter.format(value);
+        return Number(formatter.format(value));
     };
 
     return { formatPrice };

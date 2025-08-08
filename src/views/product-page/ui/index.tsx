@@ -3,8 +3,6 @@
 import { TypeChair } from "@/entities/product";
 import Container from "@/shared/ui/container";
 import { useGetOneProductQuery } from "@/entities/product/api/thunks";
-import { Heart } from "lucide-react";
-import { Button } from "@/shared/ui/button";
 import { useState } from "react";
 import useFormatterPrice from "@/shared/hooks/use-formatter-price";
 import Badges from "@/views/product-page/ui/badges";
@@ -14,6 +12,9 @@ import SliderPhotos from "./slider-photos";
 import { QuantitySelector } from "./quantity-selector";
 import { ProductChars } from "./product-chars";
 import { ProductInfo } from "./product-info";
+import { AddToCartButton } from "@/features/add-to-cart";
+import { AddToFavorite } from "@/features/add-to-favorite";
+import { ProductHeading } from "./product-heading";
 
 interface Props {
     product: TypeChair;
@@ -39,14 +40,7 @@ export const ProductPage = ({ product }: Props) => {
                     <SliderPhotos images={images} />
 
                     <div className="w-full flex flex-col">
-                        <div className="mb-10">
-                            <Badges isStock={currentData.inStock} />
-                            <h2 className="text-4xl font-bold mb-4">{currentData.title}</h2>
-                            <div className="flex items-center gap-2">
-                                <span className="block mb-4 text-4xl font-medium">{formatPrice(currentData.price)}</span>
-                                <span className="block mb-4 text-2xl text-gray-500 line-through font-normal">{formatPrice(currentData.price)}</span>
-                            </div>
-                        </div>
+                        <ProductHeading title={currentData.title} price={formatPrice(currentData.price)} inStock={currentData.inStock} />
                         <ProductChars attributes={currentData.attributes} description={currentData.description} className="w-full mb-10 flex-1 min-h-[400px]" />
 
                         <div>
@@ -55,18 +49,15 @@ export const ProductPage = ({ product }: Props) => {
                                     value={selectedQuantity}
                                     onChange={setSelectedQuantity}
                                 />
-                                <Button className="py-6 flex-1/2 font-normal bg-green select-none">Добавить в корзину</Button>
+                                <AddToCartButton idProduct={currentData.id} quantity={selectedQuantity} />
                             </div>
-                            <Button variant={"outline"} className="w-full py-[22px] mb-8">   Добавить в избранное <Heart /></Button>
+                            <AddToFavorite idProduct={currentData.id} />
 
                             <ProductInfo />
                         </div>
                     </div>
                 </div>
-                {/* <SingleProductTabs
-                attributes={data.attributes}
-                description={data.description}
-            /> */}
+
             </div>
         </Container>
     );
