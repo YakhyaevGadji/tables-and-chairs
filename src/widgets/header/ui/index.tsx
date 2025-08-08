@@ -5,6 +5,7 @@ import NavList from "@/widgets/header/ui/nav-list";
 import { Button } from "@/shared/ui/button";
 import { LogIn } from "lucide-react";
 import { PAGES } from "@/shared/config/pages.config";
+import Link from "next/link";
 
 export type TypeNavs = {
     value: string;
@@ -23,10 +24,12 @@ export const Header = () => {
             <Container className="flex items-center justify-between">
                 <Logo priority={true}/>
                 <NavList navs={navs}/>
-                <Button className="bg-green">
-                    Войти
-                    <LogIn />
-                </Button>
+                <Link href="/auth/login">
+                    <Button className="bg-green">
+                        Войти
+                        <LogIn />
+                    </Button>
+                </Link>
             </Container>
         </header>
     );
