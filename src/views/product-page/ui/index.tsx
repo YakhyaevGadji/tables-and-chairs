@@ -5,7 +5,6 @@ import Container from "@/shared/ui/container";
 import { useGetOneProductQuery } from "@/entities/product/api/thunks";
 import { useState } from "react";
 import useFormatterPrice from "@/shared/hooks/use-formatter-price";
-import Badges from "@/views/product-page/ui/badges";
 import { PATCH } from "@/shared/config/pages.config";
 import { useFormatterImgs } from "@/shared/hooks/use-formatter-imgs";
 import SliderPhotos from "./slider-photos";
@@ -49,7 +48,7 @@ export const ProductPage = ({ product }: Props) => {
                                     value={selectedQuantity}
                                     onChange={setSelectedQuantity}
                                 />
-                                <AddToCartButton idProduct={currentData.id} quantity={selectedQuantity} />
+                                <AddToCartButton className="py-6 flex-1/2 " idProduct={currentData.id} quantity={selectedQuantity} />
                             </div>
                             <AddToFavorite idProduct={currentData.id} />
 

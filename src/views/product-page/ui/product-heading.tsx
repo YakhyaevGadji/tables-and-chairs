@@ -6,7 +6,7 @@ interface Props {
     className?: string;
     inStock: boolean;
     title: string;
-    price: number
+    price: string | number
 }
 
 export const ProductHeading: React.FC<Props> = ({ className, inStock, price, title }: Props) => {

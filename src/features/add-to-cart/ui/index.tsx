@@ -10,7 +10,7 @@ interface Props {
 
 export const AddToCartButton: React.FC<Props> = ({ className, idProduct, quantity = 1 }: Props) => {
     return (
-        <Button className={cn('"py-6 flex-1/2 font-normal bg-green select-none"', className)}>
+        <Button className={cn('font-normal bg-green select-none', className)}>
             Добавить в корзину
         </Button>
     );
