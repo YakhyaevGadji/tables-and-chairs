@@ -8,7 +8,6 @@ import { useGetProductsQuery } from "@/entities/product/api/thunks";
 import { Product } from "@/entities/product";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/shared/ui/accordion";
 
-
 export const HomePage = () => {
     const {data} = useGetProductsQuery();
 
@@ -39,19 +38,19 @@ export const HomePage = () => {
             <section>
                 <Accordion type="single" collapsible>
                     <h2 className="mb-5 text-[36px] font-medium">Популярные вопросы</h2>
-                    <AccordionItem className="p-4 w-full" value="item-1">
+                    <AccordionItem className="p-3" value="item-1">
                         <AccordionTrigger className="text-[24px]">Какие гарантии на мебель 12 стульев</AccordionTrigger>
                         <AccordionContent className="text-[16px]">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet cum, cumque dolore ducimus eaque earum eveniet facere facilis fugit illo in minima omnis quae quaerat quo, quos repellendus soluta!
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem className="p-4" value="item-2">
+                    <AccordionItem className="p-3" value="item-2">
                         <AccordionTrigger className="text-[24px]">Сроки изготовления столов и стульев на заказ</AccordionTrigger>
                         <AccordionContent className="text-[16px]">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur dolorem, dolores eaque incidunt ipsa laboriosam minus nam necessitatibus neque non numquam odio, officiis optio saepe sapiente, temporibus veritatis voluptates?
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem className="p-4" value="item-3">
+                    <AccordionItem className="p-3" value="item-3">
                         <AccordionTrigger className="text-[24px]">Доставка</AccordionTrigger>
                         <AccordionContent className="text-[16px]">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci autem dolorum excepturi explicabo fugiat incidunt inventore iste libero modi natus nostrum optio porro, quasi quisquam quod tempore tenetur voluptate!
