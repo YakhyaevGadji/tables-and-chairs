@@ -40,8 +40,8 @@ export async function generateMetadata({ params }: IPropsProductPageRoute): Prom
 export default async function ProductPageRoute({ params }: IPropsProductPageRoute) {
     const { slug } = await params;
     const product = await getProductCached(slug);
-
-    if(!product) {
+  
+    if (!product) {
         throw new Error("Товар не найден")
     }
 

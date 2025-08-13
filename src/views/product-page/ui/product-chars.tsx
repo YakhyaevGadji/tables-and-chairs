@@ -55,7 +55,6 @@ export const ProductChars: React.FC<Props> = ({ className, attributes, descripti
                     </ul>
                 </TabsContent>
 
-
             </Tabs>
         </div>
     );
