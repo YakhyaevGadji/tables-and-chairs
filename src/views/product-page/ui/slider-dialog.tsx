@@ -3,6 +3,7 @@ import { cn } from '@/shared/lib/utils';
 import {
     Dialog,
     DialogContent,
+    DialogDescription,
     DialogFooter,
     DialogHeader,
     DialogTitle,
@@ -32,6 +33,9 @@ export const SliderDialog: React.FC<Props> = ({ className, isModalOpen, setIsMod
                 <DialogTitle  ></DialogTitle>
                 <DialogHeader ></DialogHeader>
                 <DialogFooter ></DialogFooter>
+                <DialogDescription>
+                    Здесь вы можете просмотреть фотографии товара в увеличенном виде.
+                </DialogDescription>
             </div>
 
             <DialogContent className="sm:max-w-[425px]">

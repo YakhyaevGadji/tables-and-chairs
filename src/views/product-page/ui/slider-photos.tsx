@@ -35,7 +35,9 @@ const SliderPhotos = ({ images, buttons = true, bottomSlider = true, bottomButto
 
     useEffect(() => {
         if (!mainApi) return;
-
+        if (isModalOpen && modalApi) {
+            modalApi.scrollTo(current);
+        }
         setCurrent(mainApi.selectedScrollSnap());
 
         const handleSelect = () => {
@@ -74,22 +76,15 @@ const SliderPhotos = ({ images, buttons = true, bottomSlider = true, bottomButto
             <Carousel setApi={setMainApi} className="h-[560px]">
                 <CarouselContent>
                     {images.map((image) => (
-                        <CarouselItem key={image.id}>
-                            <div>
-                                <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-                                    <DialogTrigger asChild>
-                                        <Image
-                                            width={560}
-                                            height={560}
-                                            src={image.url}
-                                            alt={image.id + 'img'}
-                                            style={{ objectFit: 'contain', height: '560px' }}
+                        <CarouselItem onClick={() => setIsModalOpen(isModalOpen => !isModalOpen)} key={image.id}>
+                            <Image
+                                width={560}
+                                height={560}
+                                src={image.url}
+                                alt={image.id + 'img'}
+                                style={{ objectFit: 'contain', height: '560px' }}
 
-                                        />
-                                    </DialogTrigger>
-                                </Dialog>
-                            </div>
-
+                            />
                         </CarouselItem>
                     ))}
                 </CarouselContent>
