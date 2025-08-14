@@ -23,7 +23,8 @@ export const ProductPage = ({ product }: Props) => {
     const { data } = useGetOneProductQuery(product.slug, {
         skip: !product.slug,
     });
-    const [selectedQuantity, setSelectedQuantity] = useState(1)
+    const charQuantity = data?.category === "chair" ? 6 : 1
+    const [selectedQuantity, setSelectedQuantity] = useState(charQuantity)
 
 
     const currentData = data ?? product;
@@ -36,7 +37,7 @@ export const ProductPage = ({ product }: Props) => {
             <div>
                 <div className="grid mb-4 lg:grid-cols-2 gap-8 lg:gap-12">
                     <SliderPhotos images={images} />
-                   
+
                     <div className="w-full flex flex-col">
                         <ProductHeading title={currentData.title} price={formatPrice(currentData.price)} inStock={currentData.inStock} />
                         <ProductChars attributes={currentData.attributes} description={currentData.description} className="w-full mb-10 flex-1 min-h-[400px]" />
