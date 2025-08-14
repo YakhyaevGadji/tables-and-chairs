@@ -1,0 +1,61 @@
+import React from 'react';
+import { cn } from '@/shared/lib/utils';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
+import { TypeAttributes } from '@/entities/product';
+import { productCharacteristicsSchema } from '../lib/product-chars-schema';
+
+
+interface Props {
+    className?: string;
+    attributes: TypeAttributes;
+    description: string;
+}
+export const ProductChars: React.FC<Props> = ({ className, attributes, description }: Props) => {
+    return (
+        <div >
+            <Tabs defaultValue="details" className={cn('', className)}>
+                <TabsList className="grid w-full grid-cols-2 bg-gray-100 rounded-full p-1 ">
+                    <TabsTrigger
+
+                        value="details"
+                        className="cursor-pointer  rounded-full data-[state=active]:bg-white data-[state=active]:text-furniture-green"
+                    >
+                        Описание
+                    </TabsTrigger>
+                    <TabsTrigger
+                        value="packaging"
+                        className="cursor-pointer rounded-full data-[state=active]:bg-white data-[state=active]:text-furniture-green"
+                    >
+                        Характеристики
+                    </TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="details" className="mt-4 space-y-3 animate-in fade-in-0 slide-in-from-bottom-2 duration-500">
+                    <div className="text-sm text-furniture-gray space-y-2">
+                        <p>
+                            {description}
+                        </p>
+                    </div>
+                </TabsContent>
+
+                <TabsContent value="packaging" className="mt-4 space-y-3 animate-in fade-in-0 slide-in-from-bottom-2 duration-500">
+                    <ul className="space-y-2 ">
+                        {Object.entries(productCharacteristicsSchema).map(([key, label]) => {
+                            const value = attributes[key as keyof typeof attributes];
+                            if (!value) return null;
+
+                            return (
+                                <li key={key} className="flex justify-between text-sm border-b-1 border-dashed   pb-1">
+                                    <span className="text-gray-500">{label}</span>
+                                    <span className="font-medium">{value}</span>
+                                </li>
+                            );
+                        })}
+
+                    </ul>
+                </TabsContent>
+
+            </Tabs>
+        </div>
+    );
+};
