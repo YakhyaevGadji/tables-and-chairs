@@ -1,1 +1,1 @@
-export {AddToFavorite } from './ui';
+export {AddToFavoriteButton } from './ui';

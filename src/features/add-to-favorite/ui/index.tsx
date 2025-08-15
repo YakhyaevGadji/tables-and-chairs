@@ -6,12 +6,15 @@ import { Heart } from 'lucide-react';
 interface Props {
     className?: string;
     idProduct: string;
-}
+    children?: React.ReactNode
+    type?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined
 
-export const AddToFavorite: React.FC<Props> = ({ className, idProduct }: Props) => {
+}
+// w-full py-[22px] mb-8
+export const AddToFavoriteButton: React.FC<Props> = ({ className, idProduct, children, type }: Props) => {
     return (
-        <Button variant="outline" className={cn("w-full py-[22px] mb-8", className)}>
-            Добавить в избранное <Heart />
+        <Button variant={type} className={cn("", className)}>
+            {children}
         </Button>
     );
 };
