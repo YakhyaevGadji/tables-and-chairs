@@ -12,8 +12,8 @@ import { QuantitySelector } from "./quantity-selector";
 import { ProductChars } from "./product-chars";
 import { ProductInfo } from "./product-info";
 import { AddToCartButton } from "@/features/add-to-cart";
-import { AddToFavorite } from "@/features/add-to-favorite";
 import { ProductHeading } from "./product-heading";
+import { AddToFavoriteButton } from "@/features/add-to-favorite";
 
 interface Props {
     product: TypeChair;
@@ -50,7 +50,7 @@ export const ProductPage = ({ product }: Props) => {
                                 />
                                 <AddToCartButton className="py-6 flex-1/2 " idProduct={currentData.id} quantity={selectedQuantity} />
                             </div>
-                            <AddToFavorite idProduct={currentData.id} />
+                            <AddToFavoriteButton idProduct={currentData.id} />
 
                             <ProductInfo />
                         </div>
