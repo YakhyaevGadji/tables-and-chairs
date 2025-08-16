@@ -8,7 +8,7 @@ const getChairs = async () => {
         const results = await instance.get(PATCH.CHAIRS);
 
         return results.data;
-    }catch (error) {
+    } catch (error) {
         return null;
     }
 }
@@ -16,13 +16,13 @@ const getChairs = async () => {
 const ChairsCatalog = async () => {
     const data = await getChairs();
 
-    if(!data) {
+    if (!data) {
         throw new Error("ошибка")
     }
 
     return (
         <main>
-            <Chairs products={data}/>
+            <Chairs products={data} />
         </main>
     );
 };
