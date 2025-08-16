@@ -34,3 +34,5 @@ export type TypeChair = {
     updatedAt: string;
     attributes: TypeAttributes;
 };
+
+export type typeImageCarousel = Pick<TypeImage, "id" | "url">;
