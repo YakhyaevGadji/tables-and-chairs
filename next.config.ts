@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
                 hostname: '212.193.48.233',
                 pathname: '/uploads/**',
             },
+
         ],
     },
 };

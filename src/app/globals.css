@@ -5,13 +5,14 @@
 
 body {
   font-size: 14px;
- 
 }
 
 @theme {
   --color-grey: #989898;
   --color-blue: #4dcdf1;
   --color-green: #3f6a43;
+  --color-green-500: #47774C;
+
   --color-background-grey: #f7f8f9;
   --color-border-grey: rgba(0, 0, 0, 0.5);
   --color-black: #000000;
@@ -19,6 +20,14 @@ body {
 .border-grey {
   border: solid rgba(0, 0, 0, 0.1) 1px;
   border-radius: 100%;
+}
+/* Применяем при наведении на родителя */
+.parent:hover .child {
+  /* Просто подключаем твой класс */
+  box-shadow:
+    0 -4px 6px rgba(0, 0, 0, 0.1),
+    4px 0 6px rgba(0, 0, 0, 0.1),
+    -4px 0 6px rgba(0, 0, 0, 0.1);
 }
 
 @theme inline {
