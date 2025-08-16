@@ -8,15 +8,14 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/shared/ui/carousel";
-import { TypeImage } from "@/entities/product/model/types";
 import Image from "next/image";
 import { clsx } from "clsx";
 import { useEffect, useState } from "react";
 import { SliderDialog } from "./slider-dialog";
-import { Dialog, DialogTrigger } from "@/shared/ui/dialog";
-import { ZoomIn } from "lucide-react";
+import { typeImageCarousel } from "@/entities/product";
 
-export type typeImageCarousel = Pick<TypeImage, "id" | "url">;
+
+
 
 interface IPropsSingleProductSlider {
     images: typeImageCarousel[];
