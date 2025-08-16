@@ -14,6 +14,7 @@ import { ProductInfo } from "./product-info";
 import { AddToCartButton } from "@/features/add-to-cart";
 import { ProductHeading } from "./product-heading";
 import { AddToFavoriteButton } from "@/features/add-to-favorite";
+import { Heart } from "lucide-react";
 
 interface Props {
     product: TypeChair;
@@ -31,7 +32,10 @@ export const ProductPage = ({ product }: Props) => {
 
     const { formatPrice } = useFormatterPrice();
     const images = useFormatterImgs(currentData.images, PATCH.IMAGE)
-
+    const hasDiscount = currentData.oldPrice > 0;
+    const discount = Math.round((currentData.oldPrice - currentData.price) / currentData.oldPrice * 100);
+    const price = formatPrice(currentData.price);
+    const oldPrice = formatPrice(currentData.oldPrice || 0);
     return (
         <Container className="my-5">
             <div>
@@ -39,7 +43,7 @@ export const ProductPage = ({ product }: Props) => {
                     <SliderPhotos images={images} />
 
                     <div className="w-full flex flex-col">
-                        <ProductHeading title={currentData.title} price={formatPrice(currentData.price)} inStock={currentData.inStock} />
+                        <ProductHeading title={currentData.title} price={price} hasDiscount={hasDiscount} oldPrice={oldPrice} inStock={currentData.inStock} />
                         <ProductChars attributes={currentData.attributes} description={currentData.description} className="w-full mb-10 flex-1 min-h-[400px]" />
 
                         <div>
@@ -50,7 +54,9 @@ export const ProductPage = ({ product }: Props) => {
                                 />
                                 <AddToCartButton className="py-6 flex-1/2 " idProduct={currentData.id} quantity={selectedQuantity} />
                             </div>
-                            <AddToFavoriteButton idProduct={currentData.id} />
+                            <AddToFavoriteButton idProduct={currentData.id} className="w-full mb-4 py-6" type="outline">
+                                Добавить в избранное <Heart />
+                            </AddToFavoriteButton>
 
                             <ProductInfo />
                         </div>
@@ -58,6 +64,6 @@ export const ProductPage = ({ product }: Props) => {
                 </div>
 
             </div>
-        </Container>
+        </Container >
     );
 };
