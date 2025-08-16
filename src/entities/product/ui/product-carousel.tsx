@@ -40,7 +40,7 @@ export const ProductCarousel: React.FC<Props> = ({ className, imgs, currentImage
                         {imgs.map((_, index) => (
                             <div
                                 key={index}
-                                className={`w-2 h-2 rounded-full transition-all duration-200 ${currentImageIndex === index ? "bg-orange-500" : "bg-gray-300"
+                                className={`w-2 h-2 rounded-full transition-all duration-200 ${currentImageIndex === index ? "bg-green" : "bg-gray-300"
                                     }`}
                             />
                         ))}
