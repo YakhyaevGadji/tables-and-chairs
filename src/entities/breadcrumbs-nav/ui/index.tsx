@@ -19,7 +19,7 @@ const BreadcrumbsNav = () => {
     const segments = pathname.split("/").filter((item) => item !== "");
 
     return (
-        <div className="mb-6">
+        <div className="mb-2">
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
