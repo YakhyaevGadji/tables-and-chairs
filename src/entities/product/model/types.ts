@@ -1,38 +1,39 @@
 export type TypeImage = {
     id: string;
-    product_id: string;
+    productId: string;
     url: string;
-    filename: string;
-    created_at: string;
+    alt: string;
+
 }
 
 export type TypeAttributes = {
-    color: string;
-    colorFrame: string;
-    colorPillow: string;
-    material: string;
-    materialFrame: string;
-    materialPillow: string;
-    totalHeight: number;
-    width: number;
+    color?: { value: string, label: string };
+    colorFrame?: { value: string, label: string };
+    colorPillow?: { value: string, label: string };
+    material?: { value: string, label: string };
+    materialFrame?: { value: string, label: string };
+    materialPillow?: { value: string, label: string };
+    totalHeight?: number;
+    width?: number;
 }
-
+export type TypeTag = { value: string, label: string, type: string }
 export type TypeChair = {
     id: string;
     title: string;
     description: string;
-    category: string;
+    category: { value: string; label: string };
     type: string;
     slug: string;
     price: number;
-    oldPrice: number;
+    oldPrice: number | null;
     inStock: boolean;
+    hit: boolean;
+    discount: boolean;
     unitCount: number;
     images: TypeImage[];
-    tags: string[];
+    tags: TypeTag[];
     createdAt: string;
     updatedAt: string;
     attributes: TypeAttributes;
 };
 
-export type typeImageCarousel = Pick<TypeImage, "id" | "url">;

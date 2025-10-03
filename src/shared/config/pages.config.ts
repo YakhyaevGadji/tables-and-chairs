@@ -15,8 +15,8 @@ export const PAGES = {
 }
 
 export const PATCH = {
-    CHAIRS: '/products?category=chair',
+    CHAIRS: '/products?type=chair',
     CHAIR: (type: string) => `/products/${type}`,
     //временно
-    IMAGE: (type: string) => `http://212.193.48.233:8080${type}`
+    // IMAGE: (type: string) => `http://212.193.48.233:8080${type}`
 }

@@ -24,11 +24,11 @@ export const Product = ({ className, data }: IPropsProduct) => {
 
 
     const { formatPrice } = useFormatterPrice();
-    const hasDiscount = data.oldPrice > 0;
-    const discount = Math.round((data.oldPrice - data.price) / data.oldPrice * 100);
+    const hasDiscount = data.oldPrice || 0 > 0;
+    const discount = Math.round((data.oldPrice || 0 - data.price) / (data.oldPrice || 0) * 100);
     const price = formatPrice(data.price);
     const oldPrice = formatPrice(data.oldPrice || 0);
-    const images = useFormatterImgs(data.images, PATCH.IMAGE)
+    // const images = useFormatterImgs(data.images, PATCH.IMAGE)
 
     return (
         <li className={cn('cursor-pointer', className)}>
@@ -43,7 +43,7 @@ export const Product = ({ className, data }: IPropsProduct) => {
                     </AddToFavoriteButton>
 
                     {/* Product Image */}
-                    <ProductCarousel imgs={images} currentImageIndex={currentImageIndex} setCurrentImageIndex={setCurrentImageIndex} />
+                    <ProductCarousel imgs={data.images} currentImageIndex={currentImageIndex} setCurrentImageIndex={setCurrentImageIndex} />
 
                     {/* Product Info - Base content */}
                     <div className="px-6 py-4">
@@ -51,7 +51,7 @@ export const Product = ({ className, data }: IPropsProduct) => {
 
                         <div className="mb-4">
                             <h3 className="text-lg font-semibold text-gray-900 mb-1">{data.title}</h3>
-                            <p className="text-sm text-gray-500 mb-3">{objSchema[data.category]}</p>
+                            <p className="text-sm text-gray-500 mb-3">{objSchema[data.category.label]}</p>
                             <div className="flex items-center gap-2">
                                 <div className="text-2xl font-bold text-gray-900">{price}</div>
                                 {
