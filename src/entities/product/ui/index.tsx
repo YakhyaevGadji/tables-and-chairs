@@ -28,6 +28,7 @@ export const Product = ({ className, data }: IPropsProduct) => {
     const discount = Math.round((data.oldPrice || 0 - data.price) / (data.oldPrice || 0) * 100);
     const price = formatPrice(data.price);
     const oldPrice = formatPrice(data.oldPrice || 0);
+    
     // const images = useFormatterImgs(data.images, PATCH.IMAGE)
 
     return (
