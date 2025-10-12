@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { TypeChair } from "@/entities/product";
 import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
 import { PAGES, PATCH } from "@/shared/config/pages.config";
@@ -12,10 +11,10 @@ import { ProductInstock } from "./product-in-stock";
 import { objSchema } from "../model/data-schema";
 import { ProductInfo } from "./product-info";
 import { ProductCarousel } from "./product-carousel";
-import { useFormatterImgs } from "@/shared/hooks/use-formatter-imgs";
+import { TypeProduct } from "@/app/types";
 
 interface IPropsProduct {
-    data: TypeChair;
+    data: TypeProduct;
     className?: string;
 }
 
@@ -29,7 +28,6 @@ export const Product = ({ className, data }: IPropsProduct) => {
     const price = formatPrice(data.price);
     const oldPrice = formatPrice(data.oldPrice || 0);
     
-    // const images = useFormatterImgs(data.images, PATCH.IMAGE)
 
     return (
         <li className={cn('cursor-pointer', className)}>

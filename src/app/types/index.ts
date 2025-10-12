@@ -17,7 +17,7 @@ export type TypeAttributes = {
     width?: number;
 }
 export type TypeTag = { value: string, label: string, type: string }
-export type TypeChair = {
+export type TypeProduct = {
     id: string;
     title: string;
     description: string;
@@ -37,3 +37,21 @@ export type TypeChair = {
     attributes: TypeAttributes;
 };
 
+
+export type TypeCartItem = Pick<TypeProduct, "attributes" | "discount" | "hit" | "oldPrice"> & {
+    productId: number,
+    quantity: number,
+    price: number,
+    inStock: boolean,
+    description: string,
+    title: string
+    imageUrl: string,
+}
+export type TypeCart = {
+    id: number;
+    userId: number;
+    items: TypeCartItem[]
+    createdAt: string;
+    updatedAt: string;
+    totalPrice: number
+}

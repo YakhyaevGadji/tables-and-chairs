@@ -1,6 +1,6 @@
 import { ProductPage } from "@/views/product-page";
 import { instance } from "@/shared/lib/axios-instance";
-import { TypeChair } from "@/entities/product";
+import { TypeProduct } from "@/entities/product";
 import { PATCH } from "@/shared/config/pages.config";
 import { Metadata } from "next";
 import { cache } from "react";
@@ -11,7 +11,7 @@ interface IPropsProductPageRoute {
 
 const getProductCached = cache(async (slug: string) => {
     try {
-        const products = await instance.get<TypeChair | null>(PATCH.CHAIR(slug));
+        const products = await instance.get<TypeProduct | null>(PATCH.CHAIR(slug));
 
         return products.data;
     } catch (error) {

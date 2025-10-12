@@ -1,10 +1,11 @@
 'use client'
 
 import React from "react";
-import { Product, TypeChair } from "@/entities/product";
+import { Product } from "@/entities/product";
+import { TypeProduct } from "@/app/types";
 
 interface IPropsProductList {
-    data: TypeChair[];
+    data: TypeProduct[];
 }
 
 export const ProductList = ({ data }: IPropsProductList) => {

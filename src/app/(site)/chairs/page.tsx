@@ -17,7 +17,6 @@ async function getChairs() {
 
 export default async function Page() {
     const chairs = await getChairs();
-    console.log(chairs);
 
     if (!chairs) {
         return <p>Нет данных</p>;

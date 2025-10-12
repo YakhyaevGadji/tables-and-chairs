@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import Image from "next/image";
-import { TypeImage } from '../';
+import { TypeImage } from '@/app/types';
 interface Props {
     className?: string;
     imgs: TypeImage[];
