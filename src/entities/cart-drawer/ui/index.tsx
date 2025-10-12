@@ -1,25 +1,30 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/shared/lib/utils';
-import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/shared/ui/sheet';
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/shared/ui/sheet';
 import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Link } from 'lucide-react';
 import { CartDrawerItem } from './cart-drawer-item';
 import { useGetCartQuery, useUpdateCartItemMutation } from '..';
 import { TypeCartItem } from '@/app/types';
-import { debounce } from "lodash"
+import { debounce, set } from "lodash"
 interface Props {
     children: React.ReactNode
 }
 
 export const CartDrawer: React.FC<Props> = ({ children }: Props) => {
+    //Добавить футер
+    //добавить  возможность удалить карточку из корзины 
+    //добавить возможность добавлять карточку из корзины в избранное 
+    //добавить возможность переходить на страницу карточке из корзины
 
     const { data, error, isLoading } = useGetCartQuery(1)
-    const totalAmount = data?.items.reduce((acc, item) => acc + item.price, 0) || 0;
+    const [totalAmount, setTotalAmount] = useState(0);
     const [cartItems, setCartItems] = useState<TypeCartItem[]>();
+    const [discountSum, setDiscountSum] = useState(0);
     const [updateCartItem] = useUpdateCartItemMutation();
-
+    const [lengthProducts, setLengthProducts] = useState(0);
     const handleChangeQuantity = (itemId: number, newQuantity: number) => {
         if (!data) return;
 
@@ -27,10 +32,12 @@ export const CartDrawer: React.FC<Props> = ({ children }: Props) => {
             const updatedItems = cartItems!.map((item) =>
                 item.productId === itemId ? { ...item, quantity: newQuantity } : item
             );
-
-
+            setTotalAmount(updatedItems.reduce((acc, item) => acc + item.price * item.quantity, 0))
+            setLengthProducts(updatedItems.reduce((acc, item) => acc + item.quantity, 0))
+            setDiscountSum(updatedItems.reduce((acc, item) => item.discount && item.oldPrice ? acc + (item.oldPrice - item.price) * item.quantity : 0, 0))
             return updatedItems;
         });
+
     };
 
 
@@ -44,6 +51,10 @@ export const CartDrawer: React.FC<Props> = ({ children }: Props) => {
     useEffect(() => {
         if (data?.items) {
             setCartItems(data.items);
+            setTotalAmount(data.items.reduce((acc, item) => acc + item.price * item.quantity, 0));
+            setLengthProducts(data.items.reduce((acc, item) => acc + item.quantity, 0));
+            setDiscountSum(data.items.reduce((acc, item) => item.discount && item.oldPrice ? acc + (item.oldPrice - item.price) * item.quantity : 0, 0))
+
         }
     }, [data]);
     return (
@@ -61,7 +72,7 @@ export const CartDrawer: React.FC<Props> = ({ children }: Props) => {
                     {totalAmount > 0 && (
                         <SheetHeader>
                             <SheetTitle>
-                                В корзине <span className="font-bold">{data!.items.length} товара</span>
+                                В корзине <span className="font-bold">{lengthProducts} товара</span>
                             </SheetTitle>
                         </SheetHeader>
                     )}
@@ -114,29 +125,35 @@ export const CartDrawer: React.FC<Props> = ({ children }: Props) => {
                                 })}
                             </div>
 
-                            {/* <SheetFooter className="-mx-6 bg-white p-8">
-                                <div className="w-full">
-                                    <div className="flex mb-4">
-                                        <span className="flex flex-1 text-lg text-neutral-500">
-                                            Итого
-                                            <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2" />
-                                        </span>
+                            <SheetFooter className="mx-6 bg-white ">
 
-                                        <span className="font-bold text-lg">{totalAmount} ₽</span>
+                                {
+                                    discountSum > 0 && (
+                                        <div className="flex justify-between text-sm">
+                                            <span className="text-muted-foreground">Скидка</span>
+                                            <span className="font-medium text-green-600">−{discountSum} ₽</span>
+                                        </div>
+                                    )
+                                }
+
+                                <div className="border-t pt-4">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <span className="text-lg font-semibold">Итого</span>
+                                        <span className="text-2xl font-bold">{totalAmount} ₽</span>
                                     </div>
-
-                                    <Link href="/checkout">
-                                        <Button
-                                            onClick={() => setRedirecting(true)}
-                                            loading={redirecting}
-                                            type="submit"
-                                            className="w-full h-12 text-base">
-                                            Оформить заказ
-                                            <ArrowRight className="w-5 ml-2" />
-                                        </Button>
-                                    </Link>
+                                    <SheetClose asChild>
+                                        <button
+                                            onClick={() => {
+                                                // здесь можно добавить переход на страницу оформления
+                                                console.log("Переход к оформлению");
+                                            }}
+                                            className="w-full rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90 active:bg-primary/80"
+                                        >
+                                            Перейти к оформлению
+                                        </button>
+                                    </SheetClose>
                                 </div>
-                            </SheetFooter> */}
+                            </SheetFooter>
                         </>
                     )}
 

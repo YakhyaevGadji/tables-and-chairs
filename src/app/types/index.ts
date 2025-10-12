@@ -51,7 +51,4 @@ export type TypeCart = {
     id: number;
     userId: number;
     items: TypeCartItem[]
-    createdAt: string;
-    updatedAt: string;
-    totalPrice: number
 }

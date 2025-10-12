@@ -54,10 +54,13 @@ export const CartDrawerItem: React.FC<Props> = ({ className, ...props }: Props) 
 
             <div className='flex flex-col gap-3 items-end justify-between'>
                 <h3 className="font-bold text-[17px]">{price * quantity} ₽</h3>
-                <div className='flex gap-2 items-center'>
-                    <span className="text-[11px] text-muted-foreground line-through">{oldPrice} ₽</span>
-                    <DiscountBadge className="rounded bg-yellow-400 px-1 py-0.5 text-[12px] font-semibold text-yellow-900" discount={discount} />
-                </div>
+                {discount && oldPrice && (
+                    <div className='flex gap-2 items-center'>
+                        <span className="text-[11px] text-muted-foreground line-through">{oldPrice * quantity} ₽</span>
+                        <DiscountBadge className="rounded bg-yellow-400 px-1 py-0.5 text-[12px] font-semibold text-yellow-900" discount={discount} />
+                    </div>
+                )
+                }
             </div>
             <div className="flex flex-col gap-4">
                 <Heart size={16} className="text-gray-400 cursor-pointer  hover:text-red-500" />
