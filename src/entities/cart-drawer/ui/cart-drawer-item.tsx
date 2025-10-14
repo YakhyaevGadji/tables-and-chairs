@@ -17,7 +17,7 @@ type Props = Pick<TypeCartItem, "attributes"> & {
     description: string;
     oldPrice: number | null;
     onClickCountButton: (productId: number, quantity: number) => void;
-    onClickRemove: () => void;
+    onClickRemove: (productId: number) => void;
 };
 
 export const CartDrawerItem: React.FC<Props> = ({ className, ...props }: Props) => {
@@ -65,7 +65,7 @@ export const CartDrawerItem: React.FC<Props> = ({ className, ...props }: Props) 
             <div className="flex flex-col gap-4">
                 <Heart size={16} className="text-gray-400 cursor-pointer  hover:text-red-500" />
                 <Trash2Icon
-                    onClick={onClickRemove}
+                    onClick={() => onClickRemove(id)}
                     className="text-gray-400 cursor-pointer hover:text-gray-600"
                     size={16}
                 />

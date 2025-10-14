@@ -5,8 +5,7 @@ import NavList from "@/widgets/header/ui/nav-list";
 import { Button } from "@/shared/ui/button";
 import { LogIn } from "lucide-react";
 import { PAGES } from "@/shared/config/pages.config";
-import { CartButton } from "@/entities/cart-button";
-import { CartDrawer } from "@/entities/cart-drawer";
+import { CartButton } from "./header-cart-button";
 
 export type TypeNavs = {
     value: string;
@@ -30,7 +29,8 @@ export const Header = () => {
                     <LogIn />
 
                 </Button>
-                <CartDrawer><CartButton count={3} /></CartDrawer>
+                {/* отоброзить корзину, если пользователь авторизован */}
+                {/* <CartButton /> */}
             </Container>
         </header>
     );
