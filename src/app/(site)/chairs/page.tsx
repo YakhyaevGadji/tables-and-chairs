@@ -3,28 +3,28 @@ import { Chairs } from "@/views/catalogs/chairs";
 import { instance } from "@/shared/lib/axios-instance";
 import { PATCH } from "@/shared/config/pages.config";
 
-const getChairs = async () => {
+async function getChairs() {
     try {
-        const results = await instance.get(PATCH.CHAIRS);
 
-        return results.data;
+        const { data } = await instance.get(PATCH.CHAIRS);
+
+        return data;
     } catch (error) {
-        return null;
+        console.error("Ошибка при загрузке стульев:", error);
+        return [];
     }
 }
 
-const ChairsCatalog = async () => {
-    const data = await getChairs();
+export default async function Page() {
+    const chairs = await getChairs();
 
-    if (!data) {
-        throw new Error("ошибка")
+    if (!chairs) {
+        return <p>Нет данных</p>;
     }
 
     return (
         <main>
-            <Chairs products={data} />
+            <Chairs products={chairs} />
         </main>
     );
-};
-
-export default ChairsCatalog;
+}

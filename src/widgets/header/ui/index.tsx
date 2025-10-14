@@ -5,6 +5,7 @@ import NavList from "@/widgets/header/ui/nav-list";
 import { Button } from "@/shared/ui/button";
 import { LogIn } from "lucide-react";
 import { PAGES } from "@/shared/config/pages.config";
+import { CartButton } from "./header-cart-button";
 
 export type TypeNavs = {
     value: string;
@@ -12,21 +13,24 @@ export type TypeNavs = {
 }
 
 const navs = [
-    {value: 'Главная', href: PAGES.HOME},
-    {value: 'Стулья', href: PAGES.CHAIRS},
-    {value: 'О нас', href: PAGES.ABOUT}
+    { value: 'Главная', href: PAGES.HOME },
+    { value: 'Стулья', href: PAGES.CHAIRS },
+    { value: 'О нас', href: PAGES.ABOUT }
 ];
 
 export const Header = () => {
     return (
         <header className="py-5 bg-[#F7F8F9]">
             <Container className="flex items-center justify-between">
-                <Logo priority={true}/>
-                <NavList navs={navs}/>
+                <Logo priority={true} />
+                <NavList navs={navs} />
                 <Button className="bg-green">
                     Войти
                     <LogIn />
+
                 </Button>
+                {/* отоброзить корзину, если пользователь авторизован */}
+                {/* <CartButton /> */}
             </Container>
         </header>
     );

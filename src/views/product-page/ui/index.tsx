@@ -1,6 +1,6 @@
 "use client";
 
-import { TypeChair } from "@/entities/product";
+import { TypeProduct } from "@/entities/product";
 import Container from "@/shared/ui/container";
 import { useGetOneProductQuery } from "@/entities/product/api/thunks";
 import { useState } from "react";
@@ -17,7 +17,7 @@ import { AddToFavoriteButton } from "@/features/add-to-favorite";
 import { Heart } from "lucide-react";
 
 interface Props {
-    product: TypeChair;
+    product: TypeProduct;
 }
 
 export const ProductPage = ({ product }: Props) => {

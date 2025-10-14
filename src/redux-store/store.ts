@@ -1,14 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { thunksProduct } from "@/entities/product/api/thunks";
 import { thunksAuth } from '@/views/auth';
+import { thunksCart } from '@/entities/cart-drawer';
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
             [thunksProduct.reducerPath]: thunksProduct.reducer,
             [thunksAuth.reducerPath]: thunksAuth.reducer,
+            [thunksCart.reducerPath]: thunksCart.reducer,
+
         },
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunksProduct.middleware, thunksAuth.middleware),
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+            .concat(thunksProduct.middleware, thunksAuth.middleware, thunksCart.middleware),
     })
 }
 

@@ -4,9 +4,9 @@ import { Shield, Truck } from 'lucide-react';
 
 interface Props {
     className?: string;
-    material: string;
-    width: number;
-    totalHeight: number
+    material?: { value: string, label: string };
+    width?: number;
+    totalHeight?: number
 }
 
 export const ProductInfo: React.FC<Props> = ({ className, material, width, totalHeight }: Props) => {
@@ -25,14 +25,14 @@ export const ProductInfo: React.FC<Props> = ({ className, material, width, total
             </div>
 
             <div className="mb-4 space-y-2 text-sm text-gray-600">
-                <div className="flex justify-between">
-                    <span>Материал:</span>
-                    <span className="font-medium">{material}</span>
-                </div>
-                <div className="flex justify-between">
-                    <span>Размеры</span>
-                    <span className="font-medium">{width} x {totalHeight}</span>
-                </div>
+                {material && <div className="flex justify-between">
+                    <span>Материал</span><span className="font-medium">{material.label}</span>
+                </div>}
+                {
+                    width && totalHeight && <div className="flex justify-between">
+                        <span>Размер</span><span className="font-medium">{width} x {totalHeight} см.</span>
+                    </div>
+                }
             </div>
         </div>
     );

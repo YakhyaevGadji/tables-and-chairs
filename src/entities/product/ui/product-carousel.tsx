@@ -1,10 +1,10 @@
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import Image from "next/image";
-import { typeImageCarousel } from '../model/types';
+import { TypeImage } from '@/app/types';
 interface Props {
     className?: string;
-    imgs: typeImageCarousel[];
+    imgs: TypeImage[];
     currentImageIndex: number;
     setCurrentImageIndex: (index: number) => void;
 }
