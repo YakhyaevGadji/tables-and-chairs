@@ -10,8 +10,8 @@ interface IPropsChairs {
 
 export const Chairs = ({ products }: IPropsChairs) => {
     return (
-        <Container className="grid grid-cols-[280px_1fr] gap-6">
-            <FiltersGroup className="sticky top-4 self-start h-[400px]" />
+        <Container className="grid grid-cols-[280px_1fr] p-0 gap-6">
+            <FiltersGroup className="sticky p-3 top-4 self-start h-[400px]" />
             <ProductList data={products} />
         </Container>
     );
