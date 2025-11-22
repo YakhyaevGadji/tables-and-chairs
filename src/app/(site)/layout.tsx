@@ -4,6 +4,7 @@ import { SubHeader } from "@/widgets/sub-header";
 import { Footer } from "@/widgets/footer";
 import Container from "@/shared/ui/container";
 import BreadcrumbsNav from "@/entities/breadcrumbs-nav/ui";
+import { AuthModal } from "@/features/authModal";
 
 export default function RootLayout({
     children,
@@ -19,9 +20,10 @@ export default function RootLayout({
             </div>
             <main className="flex-1 py-2">
                 <Container>
-                    <BreadcrumbsNav/>
+                    <BreadcrumbsNav />
                     {children}
                 </Container>
+             
             </main>
             <Footer />
         </>
