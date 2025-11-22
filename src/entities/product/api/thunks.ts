@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { PATCH } from "@/shared/config/pages.config";
 import { API_URL } from "@/shared/lib/axios-instance";
-import { TypeProduct } from "@/entities/product";
+import { TypeProduct } from "@/app/types";
 
 export const thunksProduct = createApi({
     reducerPath: 'thunksProduct',
