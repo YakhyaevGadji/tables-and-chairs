@@ -10,11 +10,17 @@ interface IPropsFiltersGroup {
 }
 
 const FiltersGroup = ({className}: IPropsFiltersGroup) => {
-    const { handlePriceChange } = useFilters();
+    const {
+        handlePriceChange,
+        valuePrice
+    } = useFilters();
 
     return (
-        <div className={cn("", className)}>
-            <FilterPrice onChange={(price) => handlePriceChange(price)}/>
+        <div className={cn("shadow-lg border rounded-[8px]", className)}>
+            <FilterPrice
+                onChange={(price) => handlePriceChange(price)}
+                valuePrice={valuePrice}
+            />
         </div>
     );
 };
