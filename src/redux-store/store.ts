@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { thunksProduct } from "@/entities/product/api/thunks";
 import { thunksAuth } from '@/views/auth';
 import { thunksCart } from '@/entities/cart-drawer';
-import authSlice from "@/entities/admin/auth-slice";
+import authSlice from "@/entities/admin/model/auth-slice";
 
 export const makeStore = () => {
     return configureStore({

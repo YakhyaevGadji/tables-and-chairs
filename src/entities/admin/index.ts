@@ -1,0 +1,1 @@
+export { FormAuthAdmin } from "./ui/form-auth-admin";
