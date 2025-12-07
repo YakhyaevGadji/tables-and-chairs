@@ -1,9 +1,10 @@
 import React from "react";
+import { AdminPage } from "@/views/admin";
 
 const PageAdmin = () => {
     return (
         <div>
-            test
+            <AdminPage/>
         </div>
     );
 };

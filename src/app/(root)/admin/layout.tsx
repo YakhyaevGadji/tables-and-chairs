@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useRequestAuthMe } from "@/entities/admin/model/use-request-auth-me";
+import { SidebarNav } from "@/widgets/admin/sidebar";
 
 const LayoutAdmin = ({children}: Readonly<{ children: React.ReactNode }>) => {
     const { handleAuthMe } = useRequestAuthMe();
@@ -12,7 +13,13 @@ const LayoutAdmin = ({children}: Readonly<{ children: React.ReactNode }>) => {
 
     return (
         <div>
-            {children}
+            <div className="flex">
+                <SidebarNav />
+
+                <div className="p-5">
+                    {children}
+                </div>
+            </div>
         </div>
     );
 };

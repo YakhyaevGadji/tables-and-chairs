@@ -31,7 +31,7 @@ export const FilterPrice = ({ className, onChange, valuePrice }: IPropsFilterPri
     return (
         <Accordion defaultValue="price" className={cn("", className)} type="single" collapsible>
             <AccordionItem value="price">
-                <AccordionTrigger className="hover:no-underline cursor-pointer p-0 pb-2 text-[17px] items-center">
+                <AccordionTrigger className="hover:no-underline cursor-pointer p-0 text-[17px] items-center">
                     Цена
                 </AccordionTrigger>
                 <AccordionContent>
