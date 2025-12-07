@@ -13,8 +13,11 @@ export const API_ROUTES = {
 
 export const API_REQUEST= {
     ADMIN: {
+        ADMIN: '/admin',
         AUTH: '/admin/auth',
-        ADMIN: '/admin'
+        PRODUCTS: '/admin/products',
+        ORDERS: '/admin/orders',
+        ANALYTICS: '/admin/analytics',
     },
 } as const;
 
