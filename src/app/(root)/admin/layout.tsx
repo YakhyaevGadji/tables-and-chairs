@@ -15,7 +15,6 @@ const LayoutAdmin = ({children}: Readonly<{ children: React.ReactNode }>) => {
         <div>
             <div className="grid grid-cols-[200px_1fr]">
                 <SidebarNav />
-
                 <div className="p-5">
                     {children}
                 </div>
