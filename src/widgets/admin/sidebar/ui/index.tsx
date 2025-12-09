@@ -6,7 +6,7 @@ import { API_REQUEST } from "@/shared/api/endpoints";
 
 export const SidebarNav = () => {
     return (
-        <aside className="bg-gray-200 max-w-[250px] w-full rounded-tr-md rounded-br-md h-screen flex flex-col justify-between">
+        <aside className="bg-gray-200 max-w-[250px] w-full rounded-tr-md rounded-br-md h-full flex flex-col justify-between">
             <div>
                 <h1 className="text-2xl p-6 border-b-1 border-gray-700">T/C admin</h1>
 

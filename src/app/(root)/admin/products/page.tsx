@@ -1,9 +1,10 @@
 import React from "react";
+import { ProductsPageAdmin } from "@/views/admin";
 
 const PageProducts = () => {
     return (
         <div>
-            product
+            <ProductsPageAdmin />
         </div>
     );
 };

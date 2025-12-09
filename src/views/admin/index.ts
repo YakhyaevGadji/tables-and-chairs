@@ -1,1 +1,1 @@
-export { AdminPage } from "./ui"
+export { ProductsPageAdmin } from "./products/ui"
