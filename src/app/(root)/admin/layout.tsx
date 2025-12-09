@@ -12,13 +12,12 @@ const LayoutAdmin = ({children}: Readonly<{ children: React.ReactNode }>) => {
     }, []);
 
     return (
-        <div>
-            <div className="grid grid-cols-[200px_1fr]">
-                <SidebarNav />
-                <div className="p-5">
-                    {children}
-                </div>
-            </div>
+        <div className="flex h-full">
+            <SidebarNav />
+
+            <main className="p-5 h-full w-full bg-gray-50">
+                {children}
+            </main>
         </div>
     );
 };
