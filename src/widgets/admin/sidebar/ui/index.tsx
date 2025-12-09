@@ -3,7 +3,7 @@ import { ActiveLink } from "@/shared/ui/active-link";
 import { BarChart3, Grid3x3, LogOut, Package, ShoppingCart } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { API_REQUEST } from "@/shared/api/endpoints";
-
+//TODO refactor: распределить по компонентам этот компонент
 export const SidebarNav = () => {
     return (
         <aside className="bg-gray-200 max-w-[250px] w-full rounded-tr-md rounded-br-md h-full flex flex-col justify-between">

@@ -15,7 +15,7 @@ const LayoutAdmin = ({children}: Readonly<{ children: React.ReactNode }>) => {
         <div className="flex h-full">
             <SidebarNav />
 
-            <main className="p-5 w-full bg-gray-50">
+            <main className="p-5 h-full w-full bg-gray-50">
                 {children}
             </main>
         </div>
