@@ -31,7 +31,7 @@ export const SidebarNav = () => {
                         <li>
                             <ActiveLink
                                 className="[&.active]:bg-gray-900 [&.active]:text-white hover:bg-gray-400 transition items-center rounded-md gap-2 px-4 py-3 flex"
-                                href={API_REQUEST.ADMIN.ORDERS}>
+                                href={API_REQUEST.ADMIN.APPLICATIONS}>
                                 <ShoppingCart />
                                 Заявки
                             </ActiveLink>
@@ -47,10 +47,10 @@ export const SidebarNav = () => {
                     </ul>
                 </nav>
             </div>
-                <Button className="m-4  ">
-                    <LogOut size={20} />
-                    <span className="font-medium">Выход</span>
-                </Button>
+            <Button className="m-4  ">
+                <LogOut size={20} />
+                <span className="font-medium">Выход</span>
+            </Button>
         </aside>
     );
 };

@@ -11,12 +11,12 @@ export const API_ROUTES = {
     },
 } as const;
 
-export const API_REQUEST= {
+export const API_REQUEST = {
     ADMIN: {
         ADMIN: '/admin',
         AUTH: '/admin/auth',
         PRODUCTS: '/admin/products',
-        ORDERS: '/admin/orders',
+        APPLICATIONS: '/admin/applications',
         ANALYTICS: '/admin/analytics',
     },
 } as const;
