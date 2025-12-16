@@ -3,6 +3,7 @@ import { AlertCircle, CheckCircle, Clock, Eye, Trash2, Truck, Zap, History, Luci
 import React, { useState } from 'react';
 import { Order, useGetOrdersQuery, useUpdateOrderStatusMutation } from '@/entities/applications';
 import { ViewApplications } from '@/features/view-applications';
+import { DetailsApplications } from '@/features/details-applications';
 
 
 export const statusConfig: Record<
@@ -85,6 +86,9 @@ export const AdminApplications: React.FC = () => {
                         const config = statusConfig[order.status]
                         const StatusIcon = config.icon
                         const color = config.color
+                        const totalPrice = order.totalPrice;
+                        const shippingCost = 500; // Example fixed shipping cost
+                        const tax = Math.round(totalPrice * 0.1);
                         return (
                             <tr
                                 key={order.id}
@@ -118,20 +122,19 @@ export const AdminApplications: React.FC = () => {
                                         </select>
                                     </div>
                                 </td>
-                                <td className="px-6 py-4 text-sm font-semibold text-primary">${order.totalPrice.toFixed(2)}</td>
+                                <td className="px-4 py-4 text-sm font-semibold text-primary ">   {(totalPrice + shippingCost + tax).toLocaleString("ru-RU")} ₽</td>
                                 <td className="px-6 py-4 text-sm text-muted-foreground">{order.createdAt}</td>
                                 <td className="px-6 py-4">
                                     <div className="flex gap-2">
-                                        <button
-                                            onClick={() => {
-                                                // setSelectedOrder(order)
-                                                // markAsRead(order.id)
-                                            }}
-                                            className="p-2 hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-accent-foreground"
-                                            title="Просмотр"
-                                        >
-                                            <Eye size={16} />
-                                        </button>
+                                        <DetailsApplications {...order} tax={tax} shippingCost={shippingCost}>
+                                            <button
+                                                className="p-2 hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-accent-foreground"
+                                                title="Просмотр"
+                                            >
+                                                <Eye size={16} />
+                                            </button>
+                                        </DetailsApplications>
+
                                         <ViewApplications order={order} icon={StatusIcon} setShowCustomerHistory={() => { }} label={config.label} color={color}>
                                             <button
                                                 // onClick={() => setCustomerHistoryEmail(order.email)}
