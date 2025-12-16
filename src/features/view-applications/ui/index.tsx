@@ -22,7 +22,7 @@ export const ViewApplications: React.FC<Props> = ({ className, color, children, 
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline">{children}</Button>
+                {children}
             </DialogTrigger>
             <DialogContent className="sm:max-w-[525px]">
                 <DialogHeader>

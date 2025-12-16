@@ -128,7 +128,7 @@ export const AdminApplications: React.FC = () => {
                                     <div className="flex gap-2">
                                         <DetailsApplications {...order} tax={tax} shippingCost={shippingCost}>
                                             <button
-                                                className="p-2 hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-accent-foreground"
+                                                className="p-2 cursor-pointer hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-accent-foreground"
                                                 title="Просмотр"
                                             >
                                                 <Eye size={16} />
@@ -137,9 +137,8 @@ export const AdminApplications: React.FC = () => {
 
                                         <ViewApplications order={order} icon={StatusIcon} setShowCustomerHistory={() => { }} label={config.label} color={color}>
                                             <button
-                                                // onClick={() => setCustomerHistoryEmail(order.email)}
-                                                className="p-2 hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-accent-foreground"
-                                                title="История заказов"
+                                                className="p-2 cursor-pointer hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-accent-foreground"
+                                                title="Просмотр"
                                             >
 
                                                 <History size={16} />
