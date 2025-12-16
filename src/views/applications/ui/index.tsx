@@ -1,15 +1,43 @@
 'use client';
-import { AlertCircle, CheckCircle, Clock, Eye, Trash2, Truck, Zap } from 'lucide-react';
+import { AlertCircle, CheckCircle, Clock, Eye, Trash2, Truck, Zap, History, LucideIcon } from 'lucide-react';
 import React, { useState } from 'react';
 import { Order, useGetOrdersQuery, useUpdateOrderStatusMutation } from '@/entities/applications';
+import { ViewApplications } from '@/features/view-applications';
 
 
-const statusConfig = {
-    pending: { label: "Ожидание", color: "bg-yellow-100 text-yellow-800", icon: <Clock /> },
-    processing: { label: "Обработка", color: "bg-blue-100 text-blue-800", icon: <AlertCircle /> },
-    shipped: { label: "Отправлено", color: "bg-purple-100 text-purple-800", icon: <Truck /> },
-    delivered: { label: "Доставлено", color: "bg-green-100 text-green-800", icon: <CheckCircle /> },
-    cancelled: { label: "Отменено", color: "bg-red-100 text-red-800", icon: <AlertCircle /> },
+export const statusConfig: Record<
+    Order['status'],
+    {
+        label: string
+        color: string
+        icon: LucideIcon
+    }
+> = {
+    pending: {
+        label: 'Ожидание',
+        color: 'bg-yellow-100 text-yellow-800',
+        icon: Clock,
+    },
+    processing: {
+        label: 'Обработка',
+        color: 'bg-blue-100 text-blue-800',
+        icon: AlertCircle,
+    },
+    shipped: {
+        label: 'Отправлено',
+        color: 'bg-purple-100 text-purple-800',
+        icon: Truck,
+    },
+    delivered: {
+        label: 'Доставлено',
+        color: 'bg-green-100 text-green-800',
+        icon: CheckCircle,
+    },
+    cancelled: {
+        label: 'Отменено',
+        color: 'bg-red-100 text-red-800',
+        icon: AlertCircle,
+    },
 }
 // type Status = keyof typeof statusConfig
 
@@ -56,6 +84,7 @@ export const AdminApplications: React.FC = () => {
                     {orders.map((order) => {
                         const config = statusConfig[order.status]
                         const StatusIcon = config.icon
+                        const color = config.color
                         return (
                             <tr
                                 key={order.id}
@@ -75,7 +104,7 @@ export const AdminApplications: React.FC = () => {
                                 <td className="px-6 py-4 text-sm text-foreground font-medium">{order.items.length} товаров</td>
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-2">
-                                        {/* <StatusIcon  /> */}
+                                        <StatusIcon className="w-3" />
                                         <select
                                             value={order.status}
                                             onChange={(e) => onChangeStatus(Number(order.id), e.target.value as Order["status"], order)}
@@ -103,13 +132,18 @@ export const AdminApplications: React.FC = () => {
                                         >
                                             <Eye size={16} />
                                         </button>
-                                        <button
-                                            // onClick={() => setCustomerHistoryEmail(order.email)}
-                                            className="p-2 hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-accent-foreground"
-                                            title="История заказов"
-                                        >
-                                            {/* <History size={16} /> */}
-                                        </button>
+                                        <ViewApplications order={order} icon={StatusIcon} setShowCustomerHistory={() => { }} label={config.label} color={color}>
+                                            <button
+                                                // onClick={() => setCustomerHistoryEmail(order.email)}
+                                                className="p-2 hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-accent-foreground"
+                                                title="История заказов"
+                                            >
+
+                                                <History size={16} />
+
+                                            </button>
+                                        </ViewApplications>
+
                                         <button
                                             // onClick={() => deleteOrder(order.id)}
                                             className="p-2 hover:bg-destructive rounded-lg transition-colors text-muted-foreground hover:text-destructive-foreground"
