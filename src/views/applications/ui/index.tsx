@@ -5,6 +5,7 @@ import { Order, useDeleteOrderMutation, useGetOrdersQuery, useUpdateOrderStatusM
 import { ViewApplications } from '@/features/view-applications';
 import { DetailsApplications } from '@/features/details-applications';
 import { RemoveApplicationsButton } from '@/features/remove-applications-button';
+import { toast } from 'sonner';
 
 
 export const statusConfig: Record<
@@ -51,22 +52,41 @@ export const AdminApplications: React.FC = () => {
 
 
     const onChangeStatus = (currentId: number, currentStatus: Order['status'], data: Order) => {
-        const { status, id, ...newData } = data
+        const { status, ...newData } = data
         const currentData = {
             ...newData,
             status: currentStatus
         }
         updateOrderStatus(currentId, currentData)
     }
-    const updateOrderStatus = async (id: number, data: any) => {
-
-
-        await updateStatus({ id, data })
+    const updateOrderStatus = async (id: number, data: Order) => {
+        const config = statusConfig[data.status]
+        try {
+            await updateStatus({ id, data })
+            toast.success("Статус заявки успешно обновлен", {
+                description: `Статус заявки #${id} был изменен на "${config.label}".`,
+            })
+        } catch (error) {
+            toast.error("Не удалось обновить статус заявки", {
+                description: `Произошла ошибка при обновлении статуса заявки #${id}. Пожалуйста, попробуйте еще раз.`,
+            })
+            console.error("Failed to update order status:", error);
+        }
     }
 
 
     const onDeleteOrder = async (id: number) => {
-        await deleteOrder(id);
+        try {
+            await deleteOrder(id)
+            toast.success("Заявка успешно удалена", {
+                description: `Заявка #${id} была удалена из списка.`,
+            })
+        } catch (error) {
+            toast.error("Не удалось удалить заявку", {
+                description: `Произошла ошибка при удалении заявки #${id}. Пожалуйста, попробуйте еще раз.`,
+            })
+            console.error("Failed to delete order:", error);
+        }
     }
     return (
         <div >
@@ -93,7 +113,7 @@ export const AdminApplications: React.FC = () => {
                         const StatusIcon = config.icon
                         const color = config.color
                         const totalPrice = order.totalPrice;
-                        const shippingCost = 500; // Example fixed shipping cost
+                        const shippingCost = 500; 
                         const tax = Math.round(totalPrice * 0.1);
                         return (
                             <tr
