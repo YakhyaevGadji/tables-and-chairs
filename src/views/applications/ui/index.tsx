@@ -1,9 +1,10 @@
 'use client';
-import { AlertCircle, CheckCircle, Clock, Eye, Trash2, Truck, Zap, History, LucideIcon } from 'lucide-react';
+import { AlertCircle, CheckCircle, Clock, Eye, Trash2, Truck, Zap, History, LucideIcon, Delete } from 'lucide-react';
 import React, { useState } from 'react';
-import { Order, useGetOrdersQuery, useUpdateOrderStatusMutation } from '@/entities/applications';
+import { Order, useDeleteOrderMutation, useGetOrdersQuery, useUpdateOrderStatusMutation } from '@/entities/applications';
 import { ViewApplications } from '@/features/view-applications';
 import { DetailsApplications } from '@/features/details-applications';
+import { RemoveApplicationsButton } from '@/features/remove-applications-button';
 
 
 export const statusConfig: Record<
@@ -46,7 +47,7 @@ export const AdminApplications: React.FC = () => {
     const { data: orders = [], isLoading } = useGetOrdersQuery()
     const [updateStatus, { isLoading: isUpdating }] =
         useUpdateOrderStatusMutation()
-
+    const [deleteOrder] = useDeleteOrderMutation();
 
 
     const onChangeStatus = (currentId: number, currentStatus: Order['status'], data: Order) => {
@@ -61,6 +62,11 @@ export const AdminApplications: React.FC = () => {
 
 
         await updateStatus({ id, data })
+    }
+
+
+    const onDeleteOrder = async (id: number) => {
+        await deleteOrder(id);
     }
     return (
         <div >
@@ -146,13 +152,7 @@ export const AdminApplications: React.FC = () => {
                                             </button>
                                         </ViewApplications>
 
-                                        <button
-                                            // onClick={() => deleteOrder(order.id)}
-                                            className="p-2 hover:bg-destructive rounded-lg transition-colors text-muted-foreground hover:text-destructive-foreground"
-                                            title="Удалить"
-                                        >
-                                            <Trash2 size={16} />
-                                        </button>
+                                        <RemoveApplicationsButton onClick={() => onDeleteOrder(Number(order.id))} />
                                     </div>
                                 </td>
                             </tr>

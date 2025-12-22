@@ -26,10 +26,19 @@ export const thunksApplications = createApi({
             }),
             invalidatesTags: ['Applications'],
         }),
+        deleteOrder: builder.mutation<void, number>({
+            query: (id) => ({
+                url: PATCH.ORDER(id),
+                method: 'DELETE',
+
+            }),
+            invalidatesTags: ['Applications'],
+        })
     }),
 })
 
 export const {
     useGetOrdersQuery,
     useUpdateOrderStatusMutation,
+    useDeleteOrderMutation
 } = thunksApplications

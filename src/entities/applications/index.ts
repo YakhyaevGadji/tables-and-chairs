@@ -1,6 +1,7 @@
 export {
     thunksApplications,
     useGetOrdersQuery,
-    useUpdateOrderStatusMutation
+    useUpdateOrderStatusMutation,
+    useDeleteOrderMutation
 } from "./model/thunkApplications";
 export type { Order, OrderItem } from "./types";
