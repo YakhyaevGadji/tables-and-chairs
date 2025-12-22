@@ -60,6 +60,7 @@ export const AdminApplications: React.FC = () => {
         updateOrderStatus(currentId, currentData)
     }
     const updateOrderStatus = async (id: number, data: Order) => {
+
         const config = statusConfig[data.status]
         try {
             await updateStatus({ id, data })
@@ -113,7 +114,7 @@ export const AdminApplications: React.FC = () => {
                         const StatusIcon = config.icon
                         const color = config.color
                         const totalPrice = order.totalPrice;
-                        const shippingCost = 500; 
+                        const shippingCost = 500; // Example fixed shipping cost
                         const tax = Math.round(totalPrice * 0.1);
                         return (
                             <tr
