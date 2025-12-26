@@ -1,11 +1,11 @@
 'use client';
-import { AlertCircle, CheckCircle, Clock, Eye, Trash2, Truck, Zap, History, LucideIcon, Delete } from 'lucide-react';
+import { AlertCircle, CheckCircle, Clock, Truck, LucideIcon, } from 'lucide-react';
 import React, { useState } from 'react';
 import { Order, useDeleteOrderMutation, useGetOrdersQuery, useUpdateOrderStatusMutation } from '@/entities/applications';
-import { ViewApplications } from '@/features/view-applications';
-import { DetailsApplications } from '@/features/details-applications';
-import { RemoveApplicationsButton } from '@/features/remove-applications-button';
+
 import { toast } from 'sonner';
+import { ApplicationsTable } from '@/widgets/admin/applications/ui/applications-table';
+
 
 
 export const statusConfig: Record<
@@ -89,98 +89,14 @@ export const AdminApplications: React.FC = () => {
             console.error("Failed to delete order:", error);
         }
     }
+
+    const shippingCost = 500; // Example fixed shipping cost
+    const taxPrecent = 0.1; // Example tax percentage
     return (
         <div >
             <h1 className='font-bold text-3xl mb-3'>Заявки и Заказы</h1>
             <p className='mb-10'>Управление заказами и отслеживание доставки</p>
-
-            <table className="w-full">
-                <thead>
-                    <tr className="border-b border-border bg-secondary">
-                        <th className="px-4 py-4 text-left text-sm font-semibold text-foreground"></th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">ID</th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Клиент</th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Контакт</th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Товаров</th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Статус</th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Сумма</th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Дата заявки</th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Действия</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {orders.map((order) => {
-                        const config = statusConfig[order.status]
-                        const StatusIcon = config.icon
-                        const color = config.color
-                        const totalPrice = order.totalPrice;
-                        const shippingCost = 500; // Example fixed shipping cost
-                        const tax = Math.round(totalPrice * 0.1);
-                        return (
-                            <tr
-                                key={order.id}
-                                className={`border-b border-border transition-colors ${order.isNew ? "bg-accent/20 hover:bg-accent/30" : "hover:bg-secondary/50"
-                                    }`}
-                            >
-                                <td className="px-4 py-4">
-                                    {order.isNew && (
-                                        <div className="flex items-center justify-center">
-                                            <Zap size={18} className="text-accent animate-pulse" />
-                                        </div>
-                                    )}
-                                </td>
-                                <td className="px-6 py-4 text-sm font-mono text-foreground">#{order.id}</td>
-                                <td className="px-6 py-4 text-sm text-foreground">{order.customerName}</td>
-                                <td className="px-6 py-4 text-sm text-muted-foreground">{order.email}</td>
-                                <td className="px-6 py-4 text-sm text-foreground font-medium">{order.items.length} товаров</td>
-                                <td className="px-6 py-4">
-                                    <div className="flex items-center gap-2">
-                                        <StatusIcon className="w-3" />
-                                        <select
-                                            value={order.status}
-                                            onChange={(e) => onChangeStatus(Number(order.id), e.target.value as Order["status"], order)}
-                                            className={`text-xs font-medium px-3 py-1 rounded-full ${config.color} border-0 cursor-pointer`}
-                                        >
-                                            <option value="pending">Ожидание</option>
-                                            <option value="processing">Обработка</option>
-                                            <option value="shipped">Отправлено</option>
-                                            <option value="delivered">Доставлено</option>
-                                            <option value="cancelled">Отменено</option>
-                                        </select>
-                                    </div>
-                                </td>
-                                <td className="px-4 py-4 text-sm font-semibold text-primary ">   {(totalPrice + shippingCost + tax).toLocaleString("ru-RU")} ₽</td>
-                                <td className="px-6 py-4 text-sm text-muted-foreground">{order.createdAt}</td>
-                                <td className="px-6 py-4">
-                                    <div className="flex gap-2">
-                                        <DetailsApplications {...order} tax={tax} shippingCost={shippingCost}>
-                                            <button
-                                                className="p-2 cursor-pointer hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-accent-foreground"
-                                                title="Просмотр"
-                                            >
-                                                <Eye size={16} />
-                                            </button>
-                                        </DetailsApplications>
-
-                                        <ViewApplications order={order} icon={StatusIcon} setShowCustomerHistory={() => { }} label={config.label} color={color}>
-                                            <button
-                                                className="p-2 cursor-pointer hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-accent-foreground"
-                                                title="Просмотр"
-                                            >
-
-                                                <History size={16} />
-
-                                            </button>
-                                        </ViewApplications>
-
-                                        <RemoveApplicationsButton onClick={() => onDeleteOrder(Number(order.id))} />
-                                    </div>
-                                </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+            <ApplicationsTable orders={orders} onChangeStatus={onChangeStatus} taxPrecent={taxPrecent} shippingCost={shippingCost} onDeleteOrder={onDeleteOrder} />
         </div>
     );
 };

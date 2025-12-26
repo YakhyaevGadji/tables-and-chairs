@@ -2,7 +2,6 @@ import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/shared/ui/dialog';
 import { Button } from '@/shared/ui/button';
-import { statusConfig } from '@/views/applications';
 import { LucideIcon, X } from 'lucide-react';
 import { Order, OrderItem } from '@/entities/applications';
 
