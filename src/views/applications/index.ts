@@ -1,1 +1,1 @@
-export { AdminApplications, statusConfig } from './ui/index';
+export { AdminApplications} from './ui/index';

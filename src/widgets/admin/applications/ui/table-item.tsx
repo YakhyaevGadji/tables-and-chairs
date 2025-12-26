@@ -1,5 +1,4 @@
 import React from 'react';
-import { cn } from '@/shared/lib/utils';
 import { Order } from '@/entities/applications';
 import { Eye, LucideIcon, Trash2, Zap, History } from 'lucide-react';
 import { DetailsApplications } from '@/features/details-applications';
