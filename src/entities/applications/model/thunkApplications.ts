@@ -13,8 +13,14 @@ export const thunksApplications = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
     tagTypes: ['Applications'],
     endpoints: (builder) => ({
-        getOrders: builder.query<Order[], void>({
-            query: () => PATCH.APPLICATIONS,
+        getOrders: builder.query<Order[], any>({
+            query: (params) => ({
+                url: PATCH.APPLICATIONS,
+                params: {
+                    sortBy: params?.sortBy ?? params.sortBy,
+                    limit: params?.limit ?? 20,
+                },
+            }),
             providesTags: ['Applications'],
         }),
 
@@ -34,6 +40,7 @@ export const thunksApplications = createApi({
             }),
             invalidatesTags: ['Applications'],
         })
+
     }),
 })
 

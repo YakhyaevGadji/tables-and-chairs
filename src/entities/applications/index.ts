@@ -5,4 +5,4 @@ export {
     useDeleteOrderMutation
 } from "./model/thunkApplications";
 export type { Order, OrderItem } from "./types";
-export { statusConfig } from "./config";
+export { statusConfig, sortOptions } from "./config";

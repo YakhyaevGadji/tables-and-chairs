@@ -35,3 +35,15 @@ export const statusConfig: Record<
         icon: AlertCircle,
     },
 }
+
+
+export const sortOptions: { label: string; value: string }[] = [
+    { label: 'Сначала новые', value: 'created_at_desc' },
+    { label: 'Сначала старые', value: 'created_at_asc' },
+    { label: 'Низкая к высокой', value: 'price_asc' },
+    { label: 'Высокая к низкой', value: 'price_desc' },
+    { label: 'По умолчанию', value: 'default' },
+    { label: 'По id к убыванию', value: 'id_asc' },
+    { label: 'По id к возрастанию', value: 'id_desc' },
+
+];

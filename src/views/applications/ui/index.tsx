@@ -11,23 +11,8 @@ import { StatsBlock } from '@/entities/stats-blok';
 // type Status = keyof typeof statusConfig
 
 export const AdminApplications: React.FC = () => {
-    const { orders, onChangeStatus, onDeleteOrder, shippingCost, taxPrecent } = useApplications();
+    const { orders, onChangeStatus, onDeleteOrder, shippingCost, taxPrecent, objSchema, statusConfigValues } = useApplications();
 
-
-    const allOrders = orders.length;
-    const pendingOrders = orders.filter(order => order.status === 'pending').length;
-    const processingOrders = orders.filter(order => order.status === 'processing').length;
-    const shippedOrders = orders.filter(order => order.status === 'shipped').length;
-    const deliveredOrders = orders.filter(order => order.status === 'delivered').length;
-    const cancelledOrders = orders.filter(order => order.status === 'cancelled').length;
-    const obj = {
-        pending: pendingOrders,
-        processing: processingOrders,
-        shipped: shippedOrders,
-        delivered: deliveredOrders,
-        cancelled: cancelledOrders,
-    }
-    const statusConfigValues = Object.values(statusConfig)
     const ordersType = statusConfigValues.map((item, index) => {
 
 
@@ -37,7 +22,7 @@ export const AdminApplications: React.FC = () => {
                 color={item.color}
                 Icon={item.icon}
                 title={item.label}
-                value={obj[Object.keys(statusConfig)[index] as keyof typeof obj].toString()}
+                value={objSchema[Object.keys(statusConfig)[index] as keyof typeof objSchema].toString()}
                 change={""}
             />
         )
