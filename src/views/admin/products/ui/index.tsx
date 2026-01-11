@@ -9,6 +9,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Label } from "@/shared/ui/label";
 import { Input } from "@/shared/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui/select";
+import { Textarea } from "@/shared/ui/textarea";
 
 type TypeChairCreate = {
     title: string;
@@ -291,12 +292,21 @@ export const ProductsPageAdmin = () => {
                             </Select>
                         </Label>
 
-                        <Label className="block">
+                        <Label className="block mb-3">
                             <p className="mb-2">Изображении</p>
                             <Input
                                 {...register("count")}
                                 type="file"
                                 className="bg-[#EEF3F4] focus:border-red-600 focus-visible:ring-0"
+                            />
+                        </Label>
+
+                        <Label className="block">
+                            <p className="mb-2">Описание</p>
+                            <Textarea
+                                {...register("description")}
+                                className="resize-none"
+                                placeholder="Введите описание..."
                             />
                         </Label>
 
