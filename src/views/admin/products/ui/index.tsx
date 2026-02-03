@@ -10,28 +10,66 @@ import { Label } from "@/shared/ui/label";
 import { Input } from "@/shared/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui/select";
 import { Textarea } from "@/shared/ui/textarea";
+import instance from "@/shared/api/instance";
+
+type TypeFileImage = {
+    file: File;
+    previewUrl: string;
+}
 
 type TypeChairCreate = {
     title: string;
     description: string;
     price: string;
     count: string;
+    images: TypeFileImage[];
 }
+
+const requestCreateProduct = async (data: TypeChairCreate) => {
+    try {
+        const result = await instance.post(
+            "/chairs/create",
+            data,
+        );
+
+        return result.data;
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 
 //TODO refactor: распределить по компонентам этот компонент
 export const ProductsPageAdmin = () => {
     const [isActiveModal, setIsActiveModal] = React.useState<boolean>(false);
+    const [images, setImages] = React.useState<TypeFileImage[]>([]);
 
     const {
         register,
         handleSubmit,
+        setValue,
         watch,
         reset,
         formState: { errors },
     } = useForm<TypeChairCreate>();
 
-    const onSubmit: SubmitHandler<TypeChairCreate> = (data) => {
-        console.log(data)
+    const handleImage = (file: File) => {
+        const newImage: TypeFileImage = {
+            file,
+            previewUrl: URL.createObjectURL(file),
+        };
+
+        setImages((prev) => {
+            const updated = [...prev, newImage];
+            setValue("images", updated, { shouldValidate: true });
+            return updated;
+        });
+    };
+
+
+    const onSubmit: SubmitHandler<TypeChairCreate> = async (data) => {
+        const res = await requestCreateProduct(data);
+        console.log(res);
     }
 
     return (
@@ -246,9 +284,7 @@ export const ProductsPageAdmin = () => {
             </ul>
 
             <Dialog open={isActiveModal} onOpenChange={(type) => setIsActiveModal(type)}>
-                <DialogTitle>
-                    Добавить товар
-                </DialogTitle>
+                <DialogTitle/>
                 <DialogContent className="sm:max-w-[425px]">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Label className="block mb-3">
@@ -292,14 +328,30 @@ export const ProductsPageAdmin = () => {
                             </Select>
                         </Label>
 
-                        <Label className="block mb-3">
-                            <p className="mb-2">Изображении</p>
-                            <Input
-                                {...register("count")}
-                                type="file"
-                                className="bg-[#EEF3F4] focus:border-red-600 focus-visible:ring-0"
-                            />
-                        </Label>
+                        {/*<Label className="block mb-3">*/}
+                        {/*    <p className="mb-2">Изображении</p>*/}
+                        {/*    <Input*/}
+                        {/*        onChange={(event) => {*/}
+                        {/*            if(!event.target.files) return;*/}
+
+                        {/*            handleImage(event.target.files[0])*/}
+                        {/*        }}*/}
+                        {/*        type="file"*/}
+                        {/*        className="bg-[#EEF3F4] focus:border-red-600 focus-visible:ring-0"*/}
+                        {/*    />*/}
+                        {/*</Label>*/}
+
+                        <ul className="flex">
+                            {images.map((img, index) => (
+                                <li key={index} className="w-15 h-15">
+                                    <img
+                                        src={img.previewUrl}
+                                        alt={`Изображение ${index}`}
+                                        className="w-15 h-15 object-cover rounded-lg"
+                                    />
+                                </li>
+                            ))}
+                        </ul>
 
                         <Label className="block">
                             <p className="mb-2">Описание</p>
