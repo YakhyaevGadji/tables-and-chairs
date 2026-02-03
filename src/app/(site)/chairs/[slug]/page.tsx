@@ -1,9 +1,9 @@
 import { ProductPage } from "@/views/product-page";
 import { instance } from "@/shared/lib/axios-instance";
-import { TypeProduct } from "@/entities/product";
 import { PATCH } from "@/shared/config/pages.config";
 import { Metadata } from "next";
 import { cache } from "react";
+import { TypeProduct } from "@/app/types";
 
 interface IPropsProductPageRoute {
     params: Promise<{ slug: string }>;
