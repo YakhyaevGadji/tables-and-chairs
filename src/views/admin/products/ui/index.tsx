@@ -22,21 +22,33 @@ type TypeChairCreate = {
     description: string;
     price: string;
     count: string;
-    images: TypeFileImage[];
+    images: File[];
 }
 
 const requestCreateProduct = async (data: TypeChairCreate) => {
     try {
+        const formData = new FormData();
+
+        formData.append("title", data.title);
+        formData.append("description", data.description);
+        formData.append("price", data.price);
+        formData.append("count", data.count);
+
+        data.images.forEach(file => {
+            formData.append("images", file);
+        });
+
         const result = await instance.post(
             "/chairs/create",
-            data,
+            formData,
         );
 
         return result.data;
-    } catch (err) {
-        console.log(err);
+    }catch (err) {
+        console.log(err)
     }
 };
+
 
 
 //TODO refactor: распределить по компонентам этот компонент
@@ -59,9 +71,15 @@ export const ProductsPageAdmin = () => {
             previewUrl: URL.createObjectURL(file),
         };
 
-        setImages((prev) => {
+        setImages(prev => {
             const updated = [...prev, newImage];
-            setValue("images", updated, { shouldValidate: true });
+
+            setValue(
+                "images",
+                updated.map(img => img.file),
+                { shouldValidate: true }
+            );
+
             return updated;
         });
     };
@@ -328,25 +346,25 @@ export const ProductsPageAdmin = () => {
                             </Select>
                         </Label>
 
-                        {/*<Label className="block mb-3">*/}
-                        {/*    <p className="mb-2">Изображении</p>*/}
-                        {/*    <Input*/}
-                        {/*        onChange={(event) => {*/}
-                        {/*            if(!event.target.files) return;*/}
+                        <Label className="block mb-3">
+                            <p className="mb-2">Изображении</p>
+                            <Input
+                                onChange={(event) => {
+                                    if(!event.target.files) return;
 
-                        {/*            handleImage(event.target.files[0])*/}
-                        {/*        }}*/}
-                        {/*        type="file"*/}
-                        {/*        className="bg-[#EEF3F4] focus:border-red-600 focus-visible:ring-0"*/}
-                        {/*    />*/}
-                        {/*</Label>*/}
+                                    handleImage(event.target.files[0])
+                                }}
+                                type="file"
+                                className="bg-[#EEF3F4] focus:border-red-600 focus-visible:ring-0"
+                            />
+                        </Label>
 
                         <ul className="flex">
-                            {images.map((img, index) => (
+                            {images.map((image, index) => (
                                 <li key={index} className="w-15 h-15">
                                     <img
-                                        src={img.previewUrl}
-                                        alt={`Изображение ${index}`}
+                                        src={image.previewUrl}
+                                        alt={`Изображение`}
                                         className="w-15 h-15 object-cover rounded-lg"
                                     />
                                 </li>
