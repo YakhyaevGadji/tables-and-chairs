@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/shared/ui/button";
 import { Plus, Sparkles, Star } from "lucide-react";
 import Image from 'next/image'
@@ -11,6 +11,7 @@ import { Input } from "@/shared/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/ui/select";
 import { Textarea } from "@/shared/ui/textarea";
 import instance from "@/shared/api/instance";
+import { TypeChair, TypeChairAttributes, TypeChairOption, TypeChairType } from "@/entities/admin/model/types-form";
 
 type TypeFileImage = {
     file: File;
@@ -21,7 +22,10 @@ type TypeChairCreate = {
     title: string;
     description: string;
     price: string;
-    count: string;
+    hit: boolean;
+    type: TypeChairType;
+    tags: TypeChairOption;
+    attributes: TypeChairAttributes;
     images: File[];
 }
 
@@ -32,7 +36,6 @@ const requestCreateProduct = async (data: TypeChairCreate) => {
         formData.append("title", data.title);
         formData.append("description", data.description);
         formData.append("price", data.price);
-        formData.append("count", data.count);
 
         data.images.forEach(file => {
             formData.append("images", file);
@@ -49,12 +52,22 @@ const requestCreateProduct = async (data: TypeChairCreate) => {
     }
 };
 
+const getChairs = async () => {
+    try {
+        const { data } = await instance.get<TypeChair[]>('/chairs');
+
+        return data;
+    }catch (err) {
+        console.log(err)
+    }
+}
 
 
 //TODO refactor: распределить по компонентам этот компонент
 export const ProductsPageAdmin = () => {
-    const [isActiveModal, setIsActiveModal] = React.useState<boolean>(false);
-    const [images, setImages] = React.useState<TypeFileImage[]>([]);
+    const [isActiveModal, setIsActiveModal] = useState<boolean>(false);
+    const [images, setImages] = useState<TypeFileImage[]>([]);
+    const [chairs, setChairs] = useState<TypeChair[]>([]);
 
     const {
         register,
@@ -89,6 +102,21 @@ export const ProductsPageAdmin = () => {
         const res = await requestCreateProduct(data);
         console.log(res);
     }
+
+    const handleGetChairs = async () => {
+        const data = await getChairs();
+
+        if(data) {
+            setChairs(data);
+        }
+    }
+
+    useEffect(() => {
+        handleGetChairs()
+    }, []);
+
+
+    console.log(chairs, '[[[');
 
     return (
         <div>
@@ -315,18 +343,10 @@ export const ProductsPageAdmin = () => {
                         </Label>
 
                         <div className="flex gap-8 mb-3">
-                            <Label className="block">
+                            <Label className="w-full block">
                                 <p className="mb-2">Цена</p>
                                 <Input
                                     {...register("price")}
-                                    type="number"
-                                    className="bg-[#EEF3F4] focus:border-red-600 focus-visible:ring-0"
-                                />
-                            </Label>
-                            <Label className="block">
-                                <p className="mb-2">Количество</p>
-                                <Input
-                                    {...register("count")}
                                     type="number"
                                     className="bg-[#EEF3F4] focus:border-red-600 focus-visible:ring-0"
                                 />
