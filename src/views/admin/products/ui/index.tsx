@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/shared/ui/textarea";
 import instance from "@/shared/api/instance";
 import { TypeChair, TypeChairAttributes, TypeChairOption, TypeChairType } from "@/entities/admin/model/types-form";
+import { Checkbox } from "@/shared/ui/checkbox";
 
 type TypeFileImage = {
     file: File;
@@ -24,10 +25,21 @@ type TypeChairCreate = {
     price: string;
     hit: boolean;
     type: TypeChairType;
-    tags: TypeChairOption;
+    tags: TypeChairOption[];
     attributes: TypeChairAttributes;
     images: File[];
 }
+
+const tags = [
+    {
+        value: 'new',
+        label: 'Новинка'
+    },
+    {
+        value: 'sale',
+        label: 'Акция'
+    },
+]
 
 const requestCreateProduct = async (data: TypeChairCreate) => {
     try {
@@ -76,7 +88,14 @@ export const ProductsPageAdmin = () => {
         watch,
         reset,
         formState: { errors },
-    } = useForm<TypeChairCreate>();
+    } = useForm<TypeChairCreate>({
+        defaultValues: {
+            tags: [],
+            hit: false
+        }
+    });
+    const selectedTags = watch("tags")
+
 
     const handleImage = (file: File) => {
         const newImage: TypeFileImage = {
@@ -99,8 +118,8 @@ export const ProductsPageAdmin = () => {
 
 
     const onSubmit: SubmitHandler<TypeChairCreate> = async (data) => {
-        const res = await requestCreateProduct(data);
-        console.log(res);
+        // const res = await requestCreateProduct(data);
+        console.log(data);
     }
 
     const handleGetChairs = async () => {
@@ -354,25 +373,41 @@ export const ProductsPageAdmin = () => {
                         </div>
 
                         <Label className="block mb-3">
-                            <p className="mb-2">Категория</p>
-                            <Select>
-                                <SelectTrigger className="w-full cursor-pointer bg-[#EEF3F4]">
-                                    <SelectValue placeholder="Выберите категорию" />
-                                </SelectTrigger>
-                                <SelectContent className="cursor-pointer" position="popper">
-                                    <SelectItem value="chair">Стулья</SelectItem>
-                                    <SelectItem value="table">Столы</SelectItem>
-                                </SelectContent>
-                            </Select>
+                            <p className="mb-2">Теги</p>
+                            <div className="flex flex-col gap-2">
+                                {tags.map((tag: TypeChairOption) => {
+                                    const isChecked = selectedTags?.some((t) => t.value === tag.value);
+
+                                    return (
+                                        <div key={tag.value} className="flex gap-2 items-center">
+                                            <Checkbox
+                                                id={tag.value}
+                                                checked={isChecked}
+                                                onCheckedChange={(checked) => {
+                                                    if (checked) {
+                                                        setValue("tags", [...selectedTags, tag]);
+                                                    } else {
+                                                        setValue("tags", selectedTags.filter(
+                                                                (t) => t.value !== tag.value,
+                                                            ),
+                                                        );
+                                                    }
+                                                }}
+                                            />
+                                            <label htmlFor={tag.value}>{tag.label}</label>
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </Label>
 
                         <Label className="block mb-3">
                             <p className="mb-2">Изображении</p>
                             <Input
                                 onChange={(event) => {
-                                    if(!event.target.files) return;
+                                    if (!event.target.files) return;
 
-                                    handleImage(event.target.files[0])
+                                    handleImage(event.target.files[0]);
                                 }}
                                 type="file"
                                 className="bg-[#EEF3F4] focus:border-red-600 focus-visible:ring-0"
@@ -390,6 +425,25 @@ export const ProductsPageAdmin = () => {
                                 </li>
                             ))}
                         </ul>
+
+                        <Label className="block mb-3">
+                            <p className="mb-2">Категория</p>
+                            <Select onValueChange={(type: TypeChairType) => setValue('type', type)}>
+                                <SelectTrigger className="w-full cursor-pointer bg-[#EEF3F4]">
+                                    <SelectValue placeholder="Выберите категорию" />
+                                </SelectTrigger>
+                                <SelectContent className="cursor-pointer" position="popper">
+                                    <SelectItem value="chair">Стулья</SelectItem>
+                                    <SelectItem value="table">Столы</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </Label>
+
+                        <Label className="block mb-3">
+                            <p className="mb-2">Характеристики</p>
+
+                        </Label>
+
 
                         <Label className="block">
                             <p className="mb-2">Описание</p>
